@@ -1,0 +1,95 @@
+.cards-container {
+    flex-wrap: wrap;
+    justify-content:space-between;
+  }
+
+.card {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  margin-right:42px;
+  width: 50%;
+
+  h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  }
+
+  p {
+  font-size: 16px;
+  opacity: .7;
+  margin: 0;
+  }
+
+  .card-infos {
+  background-color: #F8F9FA;
+  height: 175px;
+  padding: 16px;
+
+    .title-and-rating {
+    display: flex;
+    justify-content: space-between;
+    }
+
+    .icons {
+      display: flex;
+      padding: 5px;
+      vertical-align: bottom;
+    }
+
+    .fa-star{
+    margin-right: 10px;
+    color: #f8d703;
+    }
+  }
+
+  .actions {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 15px;
+  box-sizing: content-box;
+
+  .fa-quote-left {
+    color:black;
+  }
+
+  .remove {
+  color: #dc3545;
+  text-decoration: none;
+  margin-left: 10px;
+  }
+}
+}
+
+.hero-card {
+  background-size: cover;
+  width: 20%;
+  height: 200px;
+  margin-top: 20px;
+  margin-right: 20px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  border-radius: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 50px;
+
+  .delete {
+  color: #dc3545;
+  font-size: 15px;
+  font-weight: lighter;
+  }
+
+  .hero-name {
+  color: white;
+  font-size: 30px;
+  }
+
+}
+
