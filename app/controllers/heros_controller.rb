@@ -1,6 +1,6 @@
-class HeroesController < ApplicationController
+class HerosController < ApplicationController
   def index
-    @heroes = Hero.all
+    @heros = Hero.all
   end
 
   def show
@@ -26,7 +26,7 @@ class HeroesController < ApplicationController
   def destroy
     @hero = Hero.find(params[:id])
     @hero.destroy
-    redirect_to heroes_path
+    redirect_to heros_path
   end
 
   private
