@@ -7,6 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'json'
 require 'faker'
+require 'rest-client'
+require_relative "../app/models/user"
+require_relative "../app/models/hero"
 
 puts 'Creating 3 fake users'
 3.times do
@@ -17,23 +20,29 @@ puts 'Creating 3 fake users'
   user.save!
 end
 
-heros = [70, 322, 333, 332, 505]
+heroes = %w[70 322 333 332 505]
 
 url = "https://superheroapi.com/api/6256070421085368"
 
 
-heros.each do |hero|
-hero_json = JSON.parse("#{url}/#{hero}/biography")
-hero_category = JSON.parse("#{url}/#{hero}/work")
-hero_picture = JSON.parse("#{url}/#{hero}/image")
-hero = Hero.new(
-  name: hero_json['name']
-  category: hero_category['occupation']
-  user_id: [1, 2, 3].sample
-  fullname: hero_json['full-name']
-  publisher: hero_json['publisher']
-  alignment: hero_json['alignment']
-  picture: hero_picture['url']
-  )
-hero.save!
+heroes.each do |hero|
+
+  hero_json = RestClient.get("#{url}/#{hero}/biography")
+  hero_json = JSON.parse(hero_json)
+
+  hero_category = RestClient.get("#{url}/#{hero}/work")
+  hero_category = JSON.parse(hero_category)
+
+  hero_picture = RestClient.get("#{url}/#{hero}/image")
+  hero_picture = JSON.parse(hero_picture)
+  hero = Hero.new(
+    name: hero_json['name'],
+    category: hero_category['occupation'],
+    user_id: [1, 2, 3].sample,
+    fullname: hero_json['full-name'],
+    publisher: hero_json['publisher'],
+    alignment: hero_json['alignment'],
+    picture: hero_picture['url'],
+    )
+  hero.save!
 end
