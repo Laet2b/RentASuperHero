@@ -1,0 +1,15 @@
+<div class="main-container-new-list">
+  <h1>Add a hero</h1>
+  <%= simple_form_for(@hero) do |f| %>
+  <div class="form-element">
+      <%= f.input :name, placeholder: "Your hero name" %>
+      <%= f.input :fullname %>
+      <%= f.input :alignment %>
+      <%= f.input :category %>
+      <%= f.input :publisher %>
+      <%= f.input :photo, as: :file %>
+  </div>
+  <input type="submit" name="commit" value="Add a hero" class="btn btn-primary">
+  <% end %>
+</div>
+

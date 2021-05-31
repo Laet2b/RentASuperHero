@@ -20,13 +20,13 @@ puts 'Creating 3 fake users'
   user.save!
 end
 
-heroes = %w[70 322 333 332 505]
+
+heros = %w[70 322 333 332 505]
+
 
 url = "https://superheroapi.com/api/6256070421085368"
 
-
-
-heroes.each do |hero|
+heros.each do |hero|
 
   hero_json = RestClient.get("#{url}/#{hero}/biography")
   hero_json = JSON.parse(hero_json)
