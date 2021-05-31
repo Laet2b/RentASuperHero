@@ -13,8 +13,7 @@ class HerosController < ApplicationController
 
   def create
     @hero = Hero.new(hero_params)
-    @user = User.find(params[:user_id])
-    @hero.user = @user
+    @hero.user = current_user
     @hero.save
     if @hero.save
       redirect_to hero_path(@hero)
