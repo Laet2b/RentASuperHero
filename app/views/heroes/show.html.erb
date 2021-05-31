@@ -1,2 +1,31 @@
-<h1>Heroes#show</h1>
-<p>Find me in app/views/heroes/show.html.erb</p>
+<% if @hero.photo.attached? %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @hero.photo.key, crop: :thumb %>');">
+  <div class="container">
+    <h1><%= @hero.name %></h1>
+  </div>
+</div>
+<% else %>
+ <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y2luZW1hfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60);">
+  <div class="container">
+    <h1><%= @hero.name %></h1>
+  </div>
+</div>
+<% end %>
+
+<div class="main-container">
+  <div class="cards-container">
+      <div class="card">
+        <img src="<%= @hero.picture %>" width="100%" height="300px" style="object-fit:cover; object-position: center top;" alt="">
+        <div class="card-infos">
+          <h2><%= @hero.fullname %></h2>
+          <h2><%= @hero.alignment %></h2>
+          <h2><%= @hero.category %></h2>
+          <h2><%= @hero.publisher %></h2>
+        </div>
+        <div class="actions">
+          <a class="link remove" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/bookmarks/<%= bookmark.id %>">Remove</a>
+        </div>
+      </div>
+  </div>
+</div>
+
