@@ -26,9 +26,9 @@
         <div class="actions">
           <a class="link remove" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/heros/<%= @hero.id %>">Remove</a>
           <% if user_signed_in? %>
-            <a class="link book" rel="nofollow" data-method="post" data-confirm="Are you sure ?" href="/heros/<%= @hero.id %>/bookings">Book this hero</a>
+            <a class="link book" rel="nofollow" data-method="get" href="/heros/<%= @hero.id %>/bookings/new">Book this hero</a>
           <% else %>
-            <a class="link book" rel="nofollow" data-method="post" href="/heros/<%= @hero.id %>/bookings">Book this hero</a>
+            <a class="link book" rel="nofollow" data-method="post" href="/users/sign_in">Log in to book</a>
           <% end %>
         </div>
       </div>

@@ -30,7 +30,14 @@
           <% @user.bookings.each do |booking| %>
             <div class="booking">
               <p><em>"<%= booking.hero.name %>"</em></p>
-              <p> <%= booking.created_at %></p>
+              <p> From: <%= booking.beginning %></p>
+              <p> To: <%= booking.end %></p>
+              <% if booking.status == true %>
+                <p>Status: Confirmed</p>
+              <% else %>
+                <p>Status: Still waiting for confirmation</p>
+              <% end %>
+
               <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/bookings/<%= booking.id %>">Remove</a>
             </div>
           <% end %>
