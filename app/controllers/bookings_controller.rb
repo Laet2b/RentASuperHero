@@ -1,6 +1,8 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.all
+    @bookings = Booking.where(params[:user_id])
+    @user = current_user
+    @hero = Hero.find(params[:hero_id])
   end
 
   def show
@@ -12,14 +14,14 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
     @hero = Hero.find(params[:hero_id])
-    @booking = Booking.new(booking_params)
+    @booking = Booking.new
     @booking.hero = @hero
-    @booking.user = @user
+    @booking.user = current_user
+    @booking.status = false
     @booking.save
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to hero_bookings_path(@hero)
     else
       render 'new'
     end
@@ -27,8 +29,9 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
+    @hero = @booking.hero_id
     @booking.destroy
-    redirect_to bookings_path
+      redirect_to hero_bookings_path(@hero)
   end
 
   private

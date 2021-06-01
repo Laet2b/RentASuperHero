@@ -1,11 +1,64 @@
-<div class="container align-item-center">
-  <div class="card-category mb-3" style="width: 900px; height: 300px;">
-    <img src="<%= @hero.picture %>" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title"><%= @hero.fullname %></h5>
-      <p class="card-text"><%= @hero.alignment %></p>
-      <p class="card-text"><%= @hero.category %></p>
-      <p class="card-text"><small class="text-muted"><%= @hero.publisher %></small></p>
-    </div>
+<% if @hero.photo.attached? %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @hero.photo.key, crop: :thumb %>');">
+  <div class="banner-text-container">
+    <h1><%= @hero.name %></h1>
   </div>
 </div>
+<% else %>
+ <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://fr.web.img5.acsta.net/newsv7/19/07/24/17/36/5687790.jpg);">
+  <div class="banner-text-container">
+    <h1><%= @hero.name %></h1>
+  </div>
+</div>
+<% end %>
+
+<div class="main-container">
+  <div class="cards-container">
+      <div class="card">
+        <img src="<%= @hero.picture %>" width="100%" height="300px" style="object-fit:cover; object-position: center top;" alt="">
+        <div class="card-infos">
+          <h2><%= @hero.name %></h2>
+          <p>Full name: <em><%= @hero.fullname %></em></p>
+          <p>Alignment: <em><%= @hero.alignment.capitalize %></em></p>
+          <p>Category: <em><%= @hero.category %></em></p>
+          <p>Owner: <em><%= @hero.publisher %></em></p>
+        </div>
+        <div class="actions">
+          <a class="link remove" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/heros/<%= @hero.id %>">Remove</a>
+          <a class="link book" rel="nofollow" data-method="post" href="/heros/<%= @hero.id %>/bookings">Book this hero</a>
+        </div>
+      </div>
+  </div>
+</div>
+
+  <div class="reviews-container">
+      <div class="display-reviews">
+        <h2>Reviews</h2>
+        <% if @hero.reviews %>
+          <% @hero.reviews.each do |review| %>
+            <div class="reviews">
+              <p><em>"<%= review.content %>"</em></p>
+              <i class="fas fa-star"></i>
+              <p> <%= review.rating %></p>
+              <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/reviews/<%= review.id %>">Remove</a>
+            </div>
+          <% end %>
+        <% else %>
+          <p><em>Be the first one to review this list</em></p>
+        <% end %>
+      </div>
+
+      <div class="review-form">
+        <h2>Add your review</h2>
+        <%= simple_form_for [@hero, @review] do |f| %>
+        <div class="form-element">
+          <%= f.input :content, placeholder: "Add your review here..." %>
+          <%= f.input :rating, error: 'Rating should be between 0 to 10', placeholder: 'From 0 to 10' %>
+        </div>
+        <div class="form-actions">
+          <input type="submit" data-method="post" name="commit" value="Create review" class="btn btn-primary">
+        <% end %>
+        </div>
+      </div>
+
+  </div>
