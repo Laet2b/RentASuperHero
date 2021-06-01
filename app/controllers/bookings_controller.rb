@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @hero = Hero.find(params[:hero_id])
   end
 
   def create
@@ -39,6 +40,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:user_id, :hero_id, :status)
+    params.require(:booking).permit(:user_id, :hero_id, :status, :beginning, :end)
   end
 end
