@@ -1,7 +1,5 @@
 class BookingsController < ApplicationController
 
-before_action :authenticate_user!, only: :create
-
   def index
     @bookings = Booking.where(params[:user_id])
     @user = current_user
@@ -18,15 +16,16 @@ before_action :authenticate_user!, only: :create
 
   def create
     @hero = Hero.find(params[:hero_id])
+    @user = current_user
     @booking = Booking.new
     @booking.hero = @hero
-    @booking.user = current_user
+    @booking.user = @user
     @booking.status = false
     @booking.save
     if @booking.save
-      redirect_to hero_bookings_path(@hero)
+      redirect_to user_path(@user)
     else
-      render 'new'
+      render 'show'
     end
   end
 

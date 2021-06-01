@@ -1,6 +1,5 @@
 class HerosController < ApplicationController
-
-before_action :authenticate_user!, only: :new
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @heros = Hero.all
@@ -29,13 +28,13 @@ before_action :authenticate_user!, only: :new
   def destroy
     @hero = Hero.find(params[:id])
     @hero.destroy
-    redirect_to heros_path
+    redirect_to user_path(current_user)
   end
 
   private
 
   def hero_params
-    params.require(:hero).permit(:user_id, :name, :category, :fullname, :publisher, :alignment, :picture)
+    params.require(:hero).permit(:user_id, :name, :category, :fullname, :publisher, :alignment, :photo)
   end
 
 end
