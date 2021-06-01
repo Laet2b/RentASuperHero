@@ -17,10 +17,11 @@
       <div class="card">
         <img src="<%= @hero.picture %>" width="100%" height="300px" style="object-fit:cover; object-position: center top;" alt="">
         <div class="card-infos">
-          <h2><%= @hero.fullname %></h2>
-          <h2><%= @hero.alignment %></h2>
-          <h2><%= @hero.category %></h2>
-          <h2><%= @hero.publisher %></h2>
+          <h2><%= @hero.name %></h2>
+          <p>Full name: <em><%= @hero.fullname %></em></p>
+          <p>Alignment: <em><%= @hero.alignment.capitalize %></em></p>
+          <p>Category: <em><%= @hero.category %></em></p>
+          <p>Owner: <em><%= @hero.publisher %></em></p>
         </div>
         <div class="actions">
           <a class="link remove" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/heros/<%= @hero.id %>">Remove</a>
