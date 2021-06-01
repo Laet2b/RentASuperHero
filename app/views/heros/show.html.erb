@@ -20,7 +20,6 @@
           <p>Owner: <em><%= @hero.publisher %></em></p>
         </div>
         <div class="actions">
-          <a class="link remove" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/heros/<%= @hero.id %>">Remove</a>
           <% if user_signed_in? %>
             <a class="link book" rel="nofollow" data-method="get" href="/heros/<%= @hero.id %>/bookings/new">Book this hero</a>
           <% else %>

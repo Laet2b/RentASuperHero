@@ -26,9 +26,10 @@
 
     <div>
       <h1>My bookings</h1>
-        <% if @user.bookings %>
+      <% d = [] %>
           <% @user.bookings.each do |booking| %>
             <div class="booking">
+              <% d << booking.id %>
               <p><em>"<%= booking.hero.name %>"</em></p>
               <p> From: <%= booking.beginning %></p>
               <p> To: <%= booking.end %></p>
@@ -37,11 +38,10 @@
               <% else %>
                 <p>Status: Still waiting for confirmation</p>
               <% end %>
-
-              <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/bookings/<%= booking.id %>">Remove</a>
+              <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/bookings/<%= booking.id %>">Cancel</a>
             </div>
           <% end %>
-        <% else %>
+          <% if d.count == 0 %>
           <p><em>You don't have any booking yet</em></p>
         <% end %>
     </div>
@@ -60,6 +60,30 @@
         <% end %>
         <% if a.count == 0 %>
           <p><em>You don't have any hero yet</em></p>
+        <% end %>
+    </div>
+
+    <div>
+      <h1>Bookings to confirm</h1>
+        <% c = [] %>
+        <% @bookings.each do |booking| %>
+          <% if booking.hero.user == current_user %>
+            <% if booking.status == true %>
+              <% c << booking.id %>
+              <p> <%= booking.user.pseudo %> has booked <%= booking.hero.name %> from <%= booking.beginning %> to <%= booking.end %></p>
+            <% else %>
+              <% c << booking.id %>
+              <p> <%= booking.user.pseudo %> want to book <%= booking.hero.name %> from <%= booking.beginning %> to <%= booking.end %></p>
+              <%= simple_form_for(booking, url: hero_booking_path(booking.hero, booking.id)) do |f| %>
+                <%=f.collection_radio_buttons :status, [[true, 'Yes'], [false, 'No']], :first, :last %>
+                <input type="submit" name="commit" data-method="patch" value="Confirm" class="btn btn-primary">
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <% if c.count == 0 %>
+          <p><em>You don't have any pending booking to confirm</em></p>
         <% end %>
     </div>
 
