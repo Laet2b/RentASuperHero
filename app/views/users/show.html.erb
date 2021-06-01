@@ -1,0 +1,59 @@
+<div>
+  <div>
+    <h1>Your profile</h1>
+    <% if @user.photo.attached? %>
+        <%= cl_image_path @user.photo.key, height: 300, crop: :fill %>
+        <h1><%= @user.pseudo %></h1>
+    <% else %>
+        <img src="https://cdn.icon-icons.com/icons2/1736/PNG/512/4043232-avatar-batman-comics-hero_113278.png" alt="avatar">
+        <h1><%= @user.pseudo %></h1>
+    <% end %>
+  </div>
+
+  <div class="main-container">
+      <div class="profile-infos">
+        <%= simple_form_for(@user) do |f| %>
+        <div class="form-element">
+          <%= f.input :pseudo %>
+          <%= f.input :email %>
+          <%= f.input :photo, as: :file %>
+        </div>
+        <input type="submit" name="commit" value="Edit" class="btn btn-primary">
+      <% end %>
+      </div>
+  </div>
+
+
+    <div>
+      <h1>My bookings</h1>
+        <% if @user.bookings %>
+          <% @user.bookings.each do |booking| %>
+            <div class="booking">
+              <p><em>"<%= booking.hero.name %>"</em></p>
+              <i class="fas fa-star"></i>
+              <p> <%= booking.created_at %></p>
+              <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/bookings/<%= booking.id %>">Remove</a>
+            </div>
+          <% end %>
+        <% else %>
+          <p><em>You don't have any booking yet</em></p>
+        <% end %>
+    </div>
+
+
+    <div>
+      <h1>My heroes</h1>
+        <% a = [] %>
+        <% @heros.each do |hero| %>
+          <% if hero.user == current_user %>
+            <p><em>"<%= hero.name %>"</em></p>
+            <p> <%= hero.created_at %></p>
+            <a class="link remove" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/heros/<%= hero.id %>">Remove</a>
+            <% a << hero.name %>
+          <% end %>
+        <% end %>
+        <% if a.count == 0 %>
+          <p><em>You don't have any hero yet</em></p>
+        <% end %>
+    </div>
+
