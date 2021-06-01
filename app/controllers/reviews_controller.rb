@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
   def create
     @hero = Hero.find(params[:hero_id])
     @review = Review.new(review_params)
+    @review.user = current_user
     @review.hero = @hero
     if @review.save
       redirect_to @hero
@@ -17,13 +18,14 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
+    @user = current_user
     @review.destroy
-    redirect_to hero_path(@review.hero)
+    redirect_to user_path(@user)
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating, :hero_id)
+    params.require(:review).permit(:content, :rating, :hero_id, :user_id)
   end
 end
