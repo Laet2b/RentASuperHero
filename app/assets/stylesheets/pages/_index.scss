@@ -1,2 +1,71 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.main-container {
+  width: 80%;
+  background-color: white;
+  margin-left: 100px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  padding: 30px;
+}
+
+.title-and-actions {
+  display:flex;
+  justify-content: space-between;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.btn, btn-primary{
+  color: white;
+}
+
+.main-container-new-hero .cards-container-new-booking{
+  width: 50%;
+  height : 450px;
+  margin-left: 300px;
+  margin-top: 20px;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 3px;
+  padding: 50px;
+  justify-content: center;
+
+  .btn{
+    margin-top:20px;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.reviews-container {
+  display: flex;
+  margin-top: 40px;
+  background-color: white;
+  padding: 30px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 3px;
+
+  .display-reviews {
+    width: 60%;
+
+    .reviews{
+    display: flex;
+    justify-content: left;
+
+    .a, p {
+      margin-right: 15px;
+      font-weight: ligther;
+    }
+
+    }
+  }
+}
+

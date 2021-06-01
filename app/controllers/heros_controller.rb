@@ -5,6 +5,7 @@ class HerosController < ApplicationController
 
   def show
     @hero = Hero.find(params[:id])
+    @review = Review.new
   end
 
   def new

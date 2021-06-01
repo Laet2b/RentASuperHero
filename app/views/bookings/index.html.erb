@@ -1,0 +1,21 @@
+<div class="main-container">
+  <div class="title-and-actions">
+    <h1>My Bookings</h1>
+  </div>
+
+  <div class="cards-container-new-booking">
+  <% if @user.bookings == [] %>
+    <p><em>No hero booked yet</em></p>
+    <a class="btn btn-primary" href="/heros">Book a hero</a>
+  <% else %>
+    <% @user.bookings.each do |booking| %>
+      <div class="booking-card">
+        <p><%= booking.hero.name %></p>
+        <p><%= booking.created_at %></p>
+        <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/bookings/<%= booking.id %>">Remove</a>
+        <br>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+</div>
