@@ -32,7 +32,7 @@ class HerosController < ApplicationController
   private
 
   def hero_params
-    params.require(:hero).permit(:user_id, :name, :category, :fullname, :publisher, :alignment, :picture)
+    params.require(:hero).permit(:user_id, :name, :category, :fullname, :publisher, :alignment, :photo)
   end
 
 end
