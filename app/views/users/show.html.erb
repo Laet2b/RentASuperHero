@@ -30,7 +30,6 @@
           <% @user.bookings.each do |booking| %>
             <div class="booking">
               <p><em>"<%= booking.hero.name %>"</em></p>
-              <i class="fas fa-star"></i>
               <p> <%= booking.created_at %></p>
               <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/bookings/<%= booking.id %>">Remove</a>
             </div>
@@ -56,4 +55,23 @@
           <p><em>You don't have any hero yet</em></p>
         <% end %>
     </div>
+
+    <div>
+      <h1>My reviews</h1>
+        <% b = [] %>
+        <% @reviews.each do |review| %>
+          <% if review.user == current_user %>
+            <p> <%= review.hero.name %></p>
+            <p><em>"<%= review.content %>"</em></p>
+            <i class="fas fa-star"></i>
+            <p> <%= review.rating %></p>
+            <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/reviews/<%= review.id %>">Remove</a>
+            <% b << review.id %>
+          <% end %>
+        <% end %>
+        <% if b.count == 0 %>
+          <p><em>You haven't write any review yet</em></p>
+        <% end %>
+    </div>
+
 

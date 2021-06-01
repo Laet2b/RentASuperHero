@@ -39,6 +39,7 @@
               <p><em>"<%= review.content %>"</em></p>
               <i class="fas fa-star"></i>
               <p> <%= review.rating %></p>
+              <p> by: <%= review.user.pseudo %></p>
             </div>
           <% end %>
         <% else %>
