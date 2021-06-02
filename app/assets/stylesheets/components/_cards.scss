@@ -1,5 +1,5 @@
-.cards-container {
-    flex-wrap: wrap;
+#cardhero {
+    flex-wrap: nowrap;
     justify-content:space-between;
   }
 
@@ -25,6 +25,10 @@
   margin: 0;
   }
 
+  a {
+    color: black;
+  }
+
   .card-infos {
   background-color: #F8F9FA;
   height: 175px;
@@ -48,12 +52,19 @@
   }
 
   .actions {
+  background-color: #542E71;
+  opacity: 0.5;
   display:flex;
   justify-content: space-between;
   align-items: center;
   height: 40px;
   padding: 15px;
   box-sizing: content-box;
+
+  :hover {
+    opacity: 1;
+  }
+
 
   .fa-quote-left {
     color:black;
@@ -70,15 +81,15 @@
 .hero-card {
   background-size: cover;
   width: 20%;
-  height: 200px;
+  height: 300px;
   margin-top: 20px;
-  margin-right: 20px;
+  margin-right: 10px;
   text-align: center;
   box-shadow: 0 0 15px rgba(0,0,0,0.5);
   border-radius: 5px;
   padding-left: 30px;
   padding-right: 30px;
-  padding-top: 50px;
+  padding-top: 250px;
 
   .delete {
   color: #dc3545;

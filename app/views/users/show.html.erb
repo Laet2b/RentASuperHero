@@ -1,1 +1,118 @@
-<h1>lol</h1>
+<div class="user-main-container">
+  <div class="user-container">
+  <div class="user-intro">
+    <% if @user.photo.attached? %>
+        <%= cl_image_tag @user.photo.key, height: 60, crop: :fill, alt: "avatar" %>
+    <% else %>
+        <%= image_tag "avatar.png", height: 60, alt: "avatar" %>
+    <% end %>
+    <h1>Hello <%= @user.pseudo %> ! This is your profile page </h1>
+  </div>
+  <div class="edit-container">
+    <h2>Edit your informations</h2>
+      <div class="profile-infos">
+        <%= simple_form_for(@user) do |f| %>
+        <div class="form-element">
+          <%= f.input :pseudo %>
+          <%= f.input :email %>
+          <%= f.input :photo, as: :file %>
+        </div>
+        <input type="submit" name="commit" value="Edit" class="btn-violet">
+      <% end %>
+      </div>
+  </div>
+ </div>
+</div>
+
+    <div class="user-main-container">
+    <div class="user-container">
+    <div class="owner-heroes">
+      <h1>My heroes</h1>
+        <% a = [] %>
+        <% @heros.each do |hero| %>
+          <% if hero.user == current_user %>
+            <div class="hero-info">
+            <p><em>"<%= hero.name %>"</em></p>
+            <a class="link remove" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/heros/<%= hero.id %>">Remove</a>
+            </div>
+            <% a << hero.name %>
+          <% end %>
+        <% end %>
+        <% if a.count == 0 %>
+          <p><em>You don't have any hero yet</em></p>
+        <% end %>
+    </div>
+
+    <div class="owner-bookings">
+      <h1>Please confirm clients booking</h1>
+        <% c = [] %>
+        <% @bookings.each do |booking| %>
+          <% if booking.hero.user == current_user %>
+            <% if booking.status == true %>
+              <% c << booking.id %>
+              <p> <%= booking.user.pseudo %> has booked <%= booking.hero.name %> from <%= booking.beginning.strftime("%d/%m/%Y") %> to <%= booking.end.strftime("%d/%m/%Y") %></p>
+            <% else %>
+              <% c << booking.id %>
+              <p> <%= booking.user.pseudo %> wants to book <%= booking.hero.name %> from <%= booking.beginning %> to <%= booking.end %></p>
+              <%= simple_form_for(booking, url: hero_booking_path(booking.hero, booking.id)) do |f| %>
+                <%=f.collection_radio_buttons :status, [[true, 'Yes'], [false, 'No']], :first, :last %>
+                <input type="submit" name="commit" data-method="patch" value="Confirm" class="btn btn-violet">
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <% if c.count == 0 %>
+          <p><em>You don't have any pending booking to confirm</em></p>
+        <% end %>
+    </div>
+    </div>
+    </div>
+
+
+   <div class="user-main-container">
+   <div class="user-container">
+    <div class="user-bookings">
+      <h1>My bookings</h1>
+      <% d = [] %>
+          <% @user.bookings.each do |booking| %>
+            <div class="booking">
+              <% d << booking.id %>
+              <div class="hero-info">
+              <p><em>"<%= booking.hero.name %>"</em></p>
+              <% if booking.status == true %>
+                <p>Confirmed</p>
+              <% else %>
+                <p>Waiting for confirmation</p>
+              <% end %>
+              <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/bookings/<%= booking.id %>">Cancel</a>
+            </div>
+            </div>
+          <% end %>
+          <% if d.count == 0 %>
+          <p><em>You don't have any booking yet</em></p>
+        <% end %>
+    </div>
+
+    <div class="user-reviews">
+      <h1>My reviews</h1>
+        <% b = [] %>
+        <% @reviews.each do |review| %>
+          <% if review.user == current_user %>
+          <div class="hero-info">
+            <p> <%= review.hero.name %></p>
+            <p><em>"<%= review.content %>"</em></p>
+            <i class="fas fa-star"></i>
+            <p> <%= review.rating %></p>
+            <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/reviews/<%= review.id %>">Remove</a>
+          </div>
+            <% b << review.id %>
+          <% end %>
+        <% end %>
+        <% if b.count == 0 %>
+          <p><em>You haven't write any review yet</em></p>
+        <% end %>
+    </div>
+  </div>
+</div>
+
