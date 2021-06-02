@@ -13,11 +13,13 @@
 .title-and-actions {
   display:flex;
   justify-content: space-between;
+  color: #542E71;
 }
 
 .cards-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .btn, btn-primary{
