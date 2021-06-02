@@ -1,0 +1,140 @@
+// Import page-specific CSS files here.
+.user-main-container {
+  width: 90%;
+  background-color: white;
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  padding: 30px;
+  background-color: #A799B7;
+}
+
+.user-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  margin: auto;
+  padding: 40px;
+  min-height: calc(100vh - 165px - 76px);
+
+  p {
+    color: black;
+  }
+
+  h2 {
+    color: #542E71;
+  }
+}
+
+.user-intro {
+  padding: 50px;
+  background-color: #FDCA40;
+  border-radius: 3px;
+  color: #542E71;
+  margin-right: 50px;
+  box-shadow: 1px 1px 3px grey;
+
+  img {
+    margin-bottom: 20px;
+  }
+}
+
+.edit-container {
+  width: 60%;
+}
+
+
+input.btn-violet {
+  text-decoration: none;
+  color: #FDCA40;
+  background-color: #A799B7;
+  border-radius: 4px;
+  padding: 10px 24px;
+  text-align: center;
+  border: none;
+}
+
+input.btn-violet:hover{
+  color: #FDCA40;
+  background-color: #542E71;
+}
+
+.owner-heroes {
+  padding: 50px;
+  background-color: white;
+  border-radius: 3px;
+  margin-right: 50px;
+  color: #542E71;
+  margin-right: 50px;
+  box-shadow: 1px 1px 3px grey;
+  width: 40%;
+  height: auto;
+}
+
+.owner-bookings {
+  padding: 50px;
+  background-color: white;
+  border-radius: 3px;
+  margin-right: 50px;
+  color: #542E71;
+  margin-right: 0px;
+  padding-right: 0px;
+  box-shadow: 1px 1px 3px grey;
+  width: 60%;
+  height: auto;
+  background-color: #FDCA40;
+}
+
+.hero-info {
+  display: flex;
+  justify-content: left;
+
+  p {
+    margin: 10px;
+    width: 120px;
+  }
+}
+
+label.collection_radio_buttons {
+  padding: 5px;
+}
+
+a.link.remove {
+   color: #1cdd87;
+}
+
+a.delete {
+   color: #1cdd87;
+}
+
+.user-bookings {
+  padding: 50px;
+  background-color: #FDCA40;
+  border-radius: 3px;
+  margin-right: 50px;
+  color: #542E71;
+  margin-right: 50px;
+  box-shadow: 1px 1px 3px grey;
+  width: 40%;
+  height: auto;
+}
+
+.user-reviews {
+  padding: 50px;
+  background-color: white;
+  border-radius: 3px;
+  margin-right: 50px;
+  color: #542E71;
+  margin-right: 0px;
+  box-shadow: 1px 1px 3px grey;
+  width: 60%;
+  height: auto;
+}
+
+.fa-star{
+  margin-right: 10px;
+  color: #FDCA40;
+  text-align: center;
+}
