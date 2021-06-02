@@ -2,9 +2,9 @@
   <div class="user-container">
   <div class="user-intro">
     <% if @user.photo.attached? %>
-        <%= cl_image_path @user.photo.key, height: 60, crop: :fill %>
+        <%= cl_image_tag @user.photo.key, height: 60, crop: :fill, alt: "avatar" %>
     <% else %>
-        <img src="https://cdn.icon-icons.com/icons2/1736/PNG/512/4043232-avatar-batman-comics-hero_113278.png" height="60px" alt="avatar">
+        <%= image_tag "avatar.png", height: 60, alt: "avatar" %>
     <% end %>
     <h1>Hello <%= @user.pseudo %> ! This is your profile page </h1>
   </div>
