@@ -1,78 +1,127 @@
-.container {
-  width: 900px;
-  margin: auto;
-}
-
-.banner {
-  background-image: url(https://jolstatic.fr/www/captures/4986/0/146600.jpg);
-  background-size: cover;
-  padding: 300px;
-}
-
-.banner h1 {
-  color: white;
-}
-
-.banner p {
-  color: white;
-  opacity: .7;
-  font-size: 20px;
-}
-.btn1 {
-  display: inline-block;
-  text-decoration: none;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 16px 36px;
-  margin-top: 50px;
-  border-radius: 50px;
-  color: rgb(255, 255, 255);
-}
-
-.btn1:hover {
-    color: rgb(161, 0, 0);
-    text-decoration: none;
-}
-
-#cardhome img {
-  height: 100px;
-}
-
-#cardhome p {
-  opacity: .5;
-}
-
-#cardhome {
-  width: 400px;
-  background-color: rgb(255, 255, 255);
-  background-size: cover;
-  border-radius: 3px;
-  box-shadow: 0 0 0px white;
-  text-align: center;
-  padding: 20px;
-  border: 0px solid white;
-}
-
-.cards {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
-}
+/* Principal caracteristics */
 
 body {
-  margin: 0;
-  color: red;
-  background-color: rgb(255, 255, 255);
-  font-family: Open Sans;
+  margin: Opx;
+  padding: 0px;
+  font-family: sans-serif;
+  width: 100%;
+  height: 100px;
 }
 
 h1, h2, h3, h4 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-a {
-  text-decoration: none;
+h2 {
+  font-weight: bold;
 }
 
-.text-center {
+/*  Banner */
+.banner {
+  width: 100%;
+  height: 600px;
+  background-image: url(https://jolstatic.fr/www/captures/4986/0/146600.jpg);
+  background-size: cover;
+  padding: 160px;
+  display: block;
+}
+
+.banner h1 {
+  color: #FDCA40;
+  font-size: 48px;
+}
+
+.banner h2 {
+  color: #542E71;
+  font-size: 36px;
+  font-weight: normal;
+}
+
+.banner p {
+  color: white;
+  padding: 20px 0px 20px 0px;
+  font-size: 24px;
+  opacity: 1;
+}
+
+/* Button */
+.container .btn-violet {
+  text-decoration: none;
+  color: #FDCA40;
+  background-color: #A799B7;
+  border-radius: 4px;
+  padding: 10px 24px;
   text-align: center;
+}
+
+.container .btn-violet:hover{
+  box-shadow: 1px 1px 3px black;
+  color: #FDCA40;
+  background-color: #542E71;
+}
+
+.center-btn {
+  display: flex;
+  align-item: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.align-btn-left ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.align-btn-left  li {
+  display: inline;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+/* Body */
+.container {
+  width: 900px;
+  margin: auto;
+  padding: 40px;
+}
+
+.card-description {
+  width:100%;
+  margin: auto;
+  padding: 20px;
+}
+
+.container p {
+  margin: 20px 0;
+  position: relative;
+}
+
+.container a {
+  margin: auto;
+}
+
+.square-img img {
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.transparent-card {
+  width: 100%;
+  height: 450px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  padding: 10px;
 }
