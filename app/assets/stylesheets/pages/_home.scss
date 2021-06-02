@@ -87,6 +87,7 @@ h2 {
   width: 900px;
   margin: auto;
   padding: 40px;
+  min-height: calc(100vh - 165px - 76px);
 }
 
 .card-description {
