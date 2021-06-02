@@ -2,8 +2,8 @@
   <h1>Book a hero</h1>
     <%= simple_form_for(@booking, as: :booking, method: :post, url: hero_bookings_path) do |f| %>
     <div class="form-element">
-        <%= f.input :beginning, as: :date %>
-        <%= f.input :end, as: :date %>
+        <%= f.input :beginning, as: :date, html5: true %>
+        <%= f.input :end, as: :date, html5: true %>
     </div>
     <input type="submit" name="commit" data-method="post" value="Book a hero" class="btn btn-primary">
   <% end %>
