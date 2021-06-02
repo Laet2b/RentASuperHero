@@ -25,6 +25,10 @@
   margin: 0;
   }
 
+  a {
+    color: black;
+  }
+
   .card-infos {
   background-color: #F8F9FA;
   height: 175px;
@@ -48,12 +52,19 @@
   }
 
   .actions {
+  background-color: #542E71;
+  opacity: 0.5;
   display:flex;
   justify-content: space-between;
   align-items: center;
   height: 40px;
   padding: 15px;
   box-sizing: content-box;
+
+  :hover {
+    opacity: 1;
+  }
+
 
   .fa-quote-left {
     color:black;
