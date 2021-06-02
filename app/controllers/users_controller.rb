@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     @heros = Hero.all
     @reviews = Review.all
+    @bookings = Booking.all
   end
 
   def edit

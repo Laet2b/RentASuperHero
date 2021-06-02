@@ -1,21 +1,17 @@
-<% if @hero.photo.attached? %>
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @hero.photo.key, crop: :thumb %>');">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://fr.web.img5.acsta.net/newsv7/19/07/24/17/36/5687790.jpg);">
   <div class="banner-text-container">
     <h1><%= @hero.name %></h1>
   </div>
 </div>
-<% else %>
- <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://fr.web.img5.acsta.net/newsv7/19/07/24/17/36/5687790.jpg);">
-  <div class="banner-text-container">
-    <h1><%= @hero.name %></h1>
-  </div>
-</div>
-<% end %>
 
 <div class="main-container">
   <div class="cards-container">
       <div class="card">
-        <img src="<%= @hero.picture %>" width="100%" height="300px" style="object-fit:cover; object-position: center top;" alt="">
+        <% if @hero.photo.attached? %>
+          <img src="<%= cl_image_path @hero.photo.key, crop: :thumb %>" width="100%" height="300px" style="object-fit:cover; object-position: center top;" alt="">
+        <% else %>
+          <img src="<%= @hero.picture %>" width="100%" height="300px" style="object-fit:cover; object-position: center top;" alt="">
+        <% end %>
         <div class="card-infos">
           <h2><%= @hero.name %></h2>
           <p>Full name: <em><%= @hero.fullname %></em></p>
@@ -24,11 +20,10 @@
           <p>Owner: <em><%= @hero.publisher %></em></p>
         </div>
         <div class="actions">
-          <a class="link remove" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/heros/<%= @hero.id %>">Remove</a>
           <% if user_signed_in? %>
-            <a class="link book" rel="nofollow" data-method="post" data-confirm="Are you sure ?" href="/heros/<%= @hero.id %>/bookings">Book this hero</a>
+            <a class="link book" rel="nofollow" data-method="get" href="/heros/<%= @hero.id %>/bookings/new">Book this hero</a>
           <% else %>
-            <a class="link book" rel="nofollow" data-method="post" href="/heros/<%= @hero.id %>/bookings">Book this hero</a>
+            <a class="link book" rel="nofollow" data-method="post" href="/users/sign_in">Log in to book</a>
           <% end %>
         </div>
       </div>
