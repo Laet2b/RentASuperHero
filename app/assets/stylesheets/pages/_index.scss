@@ -45,27 +45,5 @@
   }
 }
 
-.reviews-container {
-  display: flex;
-  margin-top: 40px;
-  background-color: white;
-  padding: 30px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 3px;
 
-  .display-reviews {
-    width: 60%;
-
-    .reviews{
-    display: flex;
-    justify-content: left;
-
-    .a, p {
-      margin-right: 15px;
-      font-weight: ligther;
-    }
-
-    }
-  }
-}
 

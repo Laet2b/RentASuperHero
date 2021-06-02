@@ -1,0 +1,166 @@
+// Import page-specific CSS files here.
+.banner-text-container h1 {
+  color: white;
+}
+
+div.card a {
+  color: #FDCA40;
+  font-size: 24px;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.show-actions {
+  background-color: #542E71;
+  opacity: 0.6;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 15px;
+  box-sizing: content-box;
+
+  :hover {
+    opacity: 1;
+  }
+}
+
+.show-main-container {
+  width: 50%;
+  background-color: white;
+  margin-left: 300px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  padding: 30px;
+}
+
+.show-cards-container {
+    flex-wrap: wrap;
+    justify-content:space-between;
+  }
+
+.show-card {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  margin-right:42px;
+  margin-left: 33px;
+
+  h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  }
+
+  p {
+  font-size: 16px;
+  opacity: .7;
+  margin: 0;
+  }
+
+}
+
+.show-card {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  margin-right:42px;
+  width: 90%;
+
+  h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  }
+
+  p {
+  font-size: 18px;
+  opacity: .7;
+  margin: 0;
+  }
+
+  a {
+  color: #FDCA40;
+  font-size: 24px;
+  text-decoration: none;
+  opacity: 0.8;
+  }
+
+  img {
+    height: 500px;
+  }
+
+  .show-card-infos {
+  background-color: #F8F9FA;
+  height: 175px;
+  padding: 16px;
+
+    .title-and-rating {
+    display: flex;
+    justify-content: space-between;
+    }
+  }
+
+}
+
+.reviews-container {
+  display: flex;
+  margin-top: 40px;
+  background-color: white;
+  padding: 30px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 3px;
+  color: #542E71;
+
+  .display-reviews {
+    width: 60%;
+
+    .reviews{
+    display: flex;
+    justify-content: left;
+
+    p {
+      margin-right: 15px;
+      font-weight: ligther;
+      color: black;
+    }
+
+    .fa-star{
+    margin-right: 10px;
+    color: #FDCA40;
+    }
+
+    h2 {
+      margin-right: 15px;
+      font-weight: ligther;
+      color: #542E71;
+    }
+
+    }
+  }
+}
+
+label {
+  color: black;
+}
+
+input.btn-violet {
+  text-decoration: none;
+  color: #FDCA40;
+  background-color: #A799B7;
+  border-radius: 4px;
+  padding: 10px 24px;
+  text-align: center;
+  border: none;
+}
+
+input.btn-violet:hover{
+  color: #FDCA40;
+  background-color: #542E71;
+}

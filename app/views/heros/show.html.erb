@@ -1,25 +1,25 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://fr.web.img5.acsta.net/newsv7/19/07/24/17/36/5687790.jpg);">
+<div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://fr.web.img5.acsta.net/newsv7/19/07/24/17/36/5687790.jpg);">
   <div class="banner-text-container">
     <h1><%= @hero.name %></h1>
   </div>
 </div>
 
-<div class="main-container">
-  <div class="cards-container">
-      <div class="card">
+<div class="show-main-container">
+  <div class="show-cards-container">
+      <div class="show-card">
         <% if @hero.photo.attached? %>
           <img src="<%= cl_image_path @hero.photo.key, crop: :thumb %>" width="100%" height="300px" style="object-fit:cover; object-position: center top;" alt="">
         <% else %>
           <img src="<%= @hero.picture %>" width="100%" height="300px" style="object-fit:cover; object-position: center top;" alt="">
         <% end %>
-        <div class="card-infos">
+        <div class="show-card-infos">
           <h2><%= @hero.name %></h2>
           <p>Full name: <em><%= @hero.fullname %></em></p>
           <p>Alignment: <em><%= @hero.alignment.capitalize %></em></p>
           <p>Category: <em><%= @hero.category %></em></p>
           <p>Owner: <em><%= @hero.publisher %></em></p>
         </div>
-        <div class="actions">
+        <div class="show-actions">
           <% if user_signed_in? %>
             <a class="link book" rel="nofollow" data-method="get" href="/heros/<%= @hero.id %>/bookings/new">Book this hero</a>
           <% else %>
@@ -55,7 +55,7 @@
           <%= f.input :rating, error: 'Rating should be between 0 to 10', placeholder: 'From 0 to 10' %>
         </div>
         <div class="form-actions">
-          <input type="submit" data-method="post" name="commit" value="Create review" class="btn btn-primary">
+          <input type="submit" data-method="post" name="commit" value="Create review" class="btn-violet">
         <% end %>
         </div>
       </div>
