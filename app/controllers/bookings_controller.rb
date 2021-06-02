@@ -8,10 +8,12 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @user = current_user
   end
 
   def new
     @booking = Booking.new
+    @hero = Hero.find(params[:hero_id])
   end
 
   def create
@@ -20,13 +22,26 @@ class BookingsController < ApplicationController
     @booking = Booking.new
     @booking.hero = @hero
     @booking.user = @user
-    @booking.status = false
+    @booking.status = nil
     @booking.save
     if @booking.save
       redirect_to user_path(@user)
     else
       render 'show'
     end
+  end
+
+  def edit
+    @user = current_user
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    @hero = Hero.find(params[:hero_id])
+    @user = current_user
+    @booking = Booking.find(params[:id])
+    @booking.update(booking_params)
+    redirect_to user_path(@user)
   end
 
   def destroy
@@ -39,6 +54,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:user_id, :hero_id, :status)
+    params.require(:booking).permit(:user_id, :hero_id, :status, :beginning, :end)
   end
 end
