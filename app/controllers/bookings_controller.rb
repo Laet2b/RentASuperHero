@@ -4,6 +4,7 @@ class BookingsController < ApplicationController
     @bookings = Booking.where(params[:user_id])
     @user = current_user
     @hero = Hero.find(params[:hero_id])
+    @user = current_user
   end
 
   def show
@@ -14,6 +15,7 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     @hero = Hero.find(params[:hero_id])
+    @user = current_user
   end
 
   def create
