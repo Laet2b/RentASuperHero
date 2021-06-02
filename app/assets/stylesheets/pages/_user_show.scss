@@ -23,6 +23,11 @@
     color: black;
   }
 
+   a {
+    color: #542E71;
+    padding: 30px;
+  }
+
   h2 {
     color: #542E71;
   }
@@ -137,4 +142,11 @@ a.delete {
   margin-right: 10px;
   color: #FDCA40;
   text-align: center;
+}
+
+.avatar {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
 }
