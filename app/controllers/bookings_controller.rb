@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
   def create
     @hero = Hero.find(params[:hero_id])
     @user = current_user
-    @booking = Booking.new
+    @booking = Booking.new(booking_params)
     @booking.hero = @hero
     @booking.user = @user
     @booking.status = nil
