@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def show
+    @user = current_user
     @heros = Hero.all
     @reviews = Review.all
     @bookings = Booking.all
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = current_user
     @user.update(user_params)
     redirect_to user_path(@user)
   end
