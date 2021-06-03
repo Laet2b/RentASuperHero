@@ -35,4 +35,10 @@ initFlatpickr();
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  // nbofdays = Document.getElementById("end-input").value.to_datetime - Document.getElementById("beginning-input").value.to_datetime
+  // nbofdays.to_i
+  // hero = Hero.find(params[:hero_id])
+  // bookingprice = @nbofdays * hero.price_per_day
+
 });
+
