@@ -11,8 +11,10 @@ class HerosController < ApplicationController
 
   def show
     @hero = Hero.find(params[:id])
+    @booking = Booking.new
     @review = Review.new
     @user = current_user
+    @average = average(@hero.id)
   end
 
   def new
@@ -38,6 +40,20 @@ class HerosController < ApplicationController
     @hero = Hero.find(params[:id])
     @hero.destroy
     redirect_to user_path(current_user)
+  end
+
+  def average(hero_id)
+    @reviews = Review.where(hero_id: hero_id)
+    @ratingarray = []
+    if @reviews == []
+      @average = nil
+    else
+      @reviews.each do |review|
+        @ratingarray << review.rating
+      end
+      @average = @ratingarray.inject(0, :+) / @ratingarray.count
+    end
+    return @average
   end
 
   private
