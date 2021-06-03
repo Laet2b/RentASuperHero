@@ -27,6 +27,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.hero = @hero
     @booking.user = @user
+    @booking.bookingprice = @bookingprice
     @booking.status = nil
     @booking.save
     if @booking.save
