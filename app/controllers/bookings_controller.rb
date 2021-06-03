@@ -23,6 +23,7 @@ class BookingsController < ApplicationController
     @user = current_user
     @nbofdays = (params[:booking][:end].to_datetime - params[:booking][:beginning].to_datetime).to_i
     @bookingprice = @nbofdays * @hero.price_per_day
+    flash.alert = "You will pay #{@bookingprice}€"
     @booking = Booking.new(booking_params)
     @booking.hero = @hero
     @booking.user = @user
