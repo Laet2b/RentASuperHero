@@ -2,6 +2,7 @@
   <h1>Add a hero</h1>
   <%= simple_form_for(@hero) do |f| %>
       <%= f.input :name, placeholder: "Your hero name" %>
+      <%= f.input :price_per_day, placeholder: "Price per day" %>
       <%= f.label "Optional. If you do not choose a photo we will provide it to you." %>
       <%= f.input :photo, as: :file %>
   <input type="submit" name="commit" value="Add a hero" class="btn btn-primary">
