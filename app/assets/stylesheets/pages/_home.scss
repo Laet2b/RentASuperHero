@@ -3,13 +3,18 @@
 body {
   margin: Opx;
   padding: 0px;
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
   width: 100%;
   height: 100px;
+  font-size: 18px;
 }
 
-h1, h2, h3, h4 {
-  font-family: Arial, Helvetica, sans-serif;
+h1 {
+  font-family: 'Sigmar One', cursive;
+}
+
+h2, h3, h4 {
+  font-family: 'Open Sans', sans-serif;
 }
 
 h2 {
@@ -20,8 +25,8 @@ h2 {
 .banner {
   width: 100%;
   height: 600px;
-  background-image: url(https://jolstatic.fr/www/captures/4986/0/146600.jpg);
   background-size: cover;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://jolstatic.fr/www/captures/4986/0/146600.jpg);
   padding: 160px;
   display: block;
 }
@@ -32,42 +37,36 @@ h2 {
 }
 
 .banner h2 {
-  color: #542E71;
-  font-size: 36px;
-  font-weight: normal;
+  color: #FDCA40;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .banner p {
   color: white;
   padding: 20px 0px 20px 0px;
-  font-size: 24px;
+  font-size: 20px;
   opacity: 1;
 }
 
 /* Button */
-.container .btn-violet {
+.btn-violet {
   text-decoration: none;
   color: #FDCA40;
-  background-color: #A799B7;
+  background-color: #542E71;
   border-radius: 4px;
   padding: 10px 24px;
   text-align: center;
+  width: max-content;
 }
 
-.container .btn-violet:hover{
+.btn-violet:hover{
   box-shadow: 1px 1px 3px black;
-  color: #FDCA40;
-  background-color: #542E71;
+  color: #542E71;
+  background-color: #FDCA40;
+  text-decoration:none;
 }
 
-.center-btn {
-  display: flex;
-  align-item: center;
-  justify-content: center;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
-}
 
 .align-btn-left ul {
   padding: 0;
@@ -86,14 +85,54 @@ h2 {
 .container {
   width: 900px;
   margin: auto;
-  padding: 40px;
-  min-height: calc(100vh - 165px - 76px);
+}
+
+.negative-margin {
+  margin-top: -110px;
+}
+
+.container2 {
+  width: 1200px;
+  margin: auto;
+}
+
+/*Re-anssurance Banner*/
+
+.white-container {
+  background-color: white;
+  margin: 10px;
+  border-radius: 4px;
+}
+
+#reanssurance-banner{
+  // width: 700px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 15px;
+}
+
+.purple-icon {
+  color: #542E71;
+  text-align: center;
+}
+.purple-icon i {
+  font-size: 30px;
+}
+
+.icon-display {
+  width: 60px;
 }
 
 .card-description {
   width:100%;
   margin: auto;
   padding: 20px;
+}
+
+.card-description {
+  color: #542E71;
 }
 
 .container p {
@@ -103,6 +142,11 @@ h2 {
 
 .container a {
   margin: auto;
+}
+
+.transparent-container {
+  margin: 10px;
+  border-radius: 4px;
 }
 
 .square-img img {
@@ -116,8 +160,8 @@ h2 {
 
 .transparent-card {
   width: 100%;
-  height: 450px;
-  padding: 0;
+  height: 600px;
+  padding-top: 500px;
   margin: 0;
   list-style: none;
   text-align: center;
@@ -125,4 +169,21 @@ h2 {
   align-items: flex-start;
   justify-content: space-evenly;
   padding: 10px;
+  background-size: cover;
+}
+
+.card-clikable {
+  width:100%;
+  margin: auto;
+  padding: 150px 60px
+}
+
+.card-clikable p {
+ color: white;
+}
+
+.card-clikable h3 {
+  font-family: 'Sigmar One', cursive;
+  color: #FDCA40;
+  font-size: 24px;
 }
