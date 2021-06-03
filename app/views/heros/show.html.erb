@@ -81,7 +81,10 @@
         <% @hero.bookings.each do |booking| %>
           <% if booking.user == current_user %>
             <% if booking.status == true %>
-              <% e << booking.id %>
+              <% time = Time.new.strftime("%Y-%m-%d") %>
+              <% if booking.end.to_s <= time %>
+                <% e << booking.id %>
+               <% end %>
             <% end %>
           <% end %>
         <% end %>

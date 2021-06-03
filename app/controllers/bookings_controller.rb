@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     @user = current_user
+    @time = Time.new.strftime("%Y-%m-%d")
   end
 
   def new

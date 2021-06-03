@@ -16,6 +16,7 @@ class HerosController < ApplicationController
     @user = current_user
     @average = average(@hero.id)
     @price_per_day = @hero.price_per_day
+    @time = Time.new.strftime("%Y-%m-%d")
   end
 
   def new

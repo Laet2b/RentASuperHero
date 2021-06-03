@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @heros = Hero.all
     @reviews = Review.all
     @bookings = Booking.all
+    @time = Time.new.strftime("%Y-%m-%d")
   end
 
   def edit
