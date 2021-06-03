@@ -13,30 +13,30 @@ div.card a {
 .show-actions {
   background-color: #542E71;
   opacity: 0.6;
+  color: white;
   display:flex;
   justify-content: space-between;
   align-items: center;
   height: 40px;
   padding: 15px;
   box-sizing: content-box;
-
-  :hover {
-    opacity: 1;
-  }
 }
 
 .show-main-container {
-  width: 50%;
+  width: 100%;
   background-color: white;
-  margin-left: 300px;
+  margin-left: 30px;
   margin-top: 20px;
   margin-bottom: 50px;
   padding: 30px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .show-cards-container {
     flex-wrap: wrap;
     justify-content:space-between;
+    width: 50%;
   }
 
 .show-card {
@@ -98,7 +98,7 @@ div.card a {
 
   .show-card-infos {
   background-color: #F8F9FA;
-  height: 175px;
+  height: 190px;
   padding: 16px;
 
     .title-and-rating {
@@ -109,6 +109,35 @@ div.card a {
 
 }
 
+.booking-reviews-container {
+  width: 50%;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.review-form {
+  padding: 20px;
+}
+
+.main-container-new-booking {
+  background-color: white;
+  background-color: #A799B7;
+  width : 75%;
+}
+
+.booking-container {
+  width: 90%;
+
+  .main-container-new-booking {
+    padding: 20px;
+  }
+}
+
+.review-form {
+  width: 80%;
+  margin-bottom: 40px;
+}
+
 .reviews-container {
   display: flex;
   margin-top: 40px;
@@ -117,33 +146,36 @@ div.card a {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 3px;
   color: #542E71;
+}
 
-  .display-reviews {
-    width: 60%;
+.display-reviews {
+    width: 100%;
+    padding: 20px;
+}
 
-    .reviews{
-    display: flex;
-    justify-content: left;
-
-    p {
-      margin-right: 15px;
-      font-weight: ligther;
-      color: black;
-    }
-
-    .fa-star{
+.fa-star{
     margin-right: 10px;
     color: #FDCA40;
-    }
+}
 
-    h2 {
-      margin-right: 15px;
-      font-weight: ligther;
-      color: #542E71;
-    }
+p .reviews {
+  margin-right: 15px;
+  font-weight: ligther;
+  color: black;
+}
 
-    }
-  }
+
+
+h2 .reviews {
+  margin-right: 15px;
+  font-weight: ligther;
+  color: #542E71;
+}
+
+
+
+.form-element {
+  width: 90%;
 }
 
 label {
@@ -163,4 +195,20 @@ input.btn-violet {
 input.btn-violet:hover{
   color: #FDCA40;
   background-color: #542E71;
+}
+
+
+.btn-violet2 {
+  text-decoration: none;
+  color: #FDCA40;
+  background-color: #542E71;
+  border-radius: 4px;
+  padding: 10px 24px;
+  text-align: center;
+  border: none;
+}
+
+.btn-violet2:hover{
+  color: #542E71;
+  background-color: #FDCA40;
 }

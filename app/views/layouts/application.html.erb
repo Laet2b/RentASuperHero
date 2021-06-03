@@ -6,6 +6,8 @@
     <%= csp_meta_tag %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
@@ -25,6 +27,7 @@
     <%= render 'shared/flashes' %>
 
   <div class="footer">
+  <h3><%= link_to "HeroesnB", "/", id: "navbar-logo" %> </h3>
     <div class="links">
       <a href="#"><i class="fab fa-fw fa-facebook-f"></i></a>
       <a href="#"><i class="fab fa-fw fa-github"></i></a>

@@ -12,3 +12,38 @@
   height: 50px;
 }
 
+
+#navbar-logo {
+  color: #FDCA40;
+  font-family: 'Sigmar One';
+  font-size: 24px;
+}
+
+#navbar-logo:hover {
+  text-decoration: none;
+  font-family: 'Sigmar One';
+  color: #542E71;
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+  color: #ffffff;
+  font-family: 'Sigmar One';
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgb(255, 255, 255);
+  font-family: 'Sigmar One';
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #542E71;
+  font-family: 'Sigmar One';
+}
+
+.bg-light {
+  background-color: #131313 !important;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  padding: 10px;
+}
