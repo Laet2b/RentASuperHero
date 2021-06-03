@@ -2,7 +2,7 @@
   <div class="user-container">
   <div class="user-intro">
     <% if @user.photo.attached? %>
-        <%= cl_image_tag @user.photo.key, height: 60, crop: :fill, alt: "avatar" %>
+        <%= cl_image_tag @user.photo.key, class:"avatar", crop: :fill, alt: "avatar" %>
     <% else %>
         <%= image_tag "avatar.png", height: 60, alt: "avatar" %>
     <% end %>
@@ -32,7 +32,7 @@
         <% @heros.each do |hero| %>
           <% if hero.user == current_user %>
             <div class="hero-info">
-            <p><em>"<%= hero.name %>"</em></p>
+            <a href="/heros/<%= hero.id %>"><em>"<%= hero.name %>"</em></a>
             <a class="link remove" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/heros/<%= hero.id %>">Remove</a>
             </div>
             <% a << hero.name %>
@@ -79,7 +79,7 @@
             <div class="booking">
               <% d << booking.id %>
               <div class="hero-info">
-              <p><em>"<%= booking.hero.name %>"</em></p>
+              <a href="/heros/<%= booking.hero.id %>"><em>"<%= booking.hero.name %>"</em></a>
               <% if booking.status == true %>
                 <p>Confirmed</p>
               <% else %>

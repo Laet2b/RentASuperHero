@@ -6,18 +6,22 @@ class HerosController < ApplicationController
 
   def index
     @heros = Hero.all
+    @user = current_user
   end
 
   def show
     @hero = Hero.find(params[:id])
     @review = Review.new
+    @user = current_user
   end
 
   def new
     @hero = Hero.new
+    @user = current_user
   end
 
   def create
+    @user = current_user
     @hero = Hero.new(hero_params)
     @hero.user = current_user
     hero_api
@@ -30,6 +34,7 @@ class HerosController < ApplicationController
   end
 
   def destroy
+    @user = current_user
     @hero = Hero.find(params[:id])
     @hero.destroy
     redirect_to user_path(current_user)
