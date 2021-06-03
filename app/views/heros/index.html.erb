@@ -11,20 +11,20 @@
       <%= button_to "Add a hero", new_hero_path, :class => "btn btn-violet", :method => :get %>
   </div>
 
-  <div class="cards-container">
+  <div class="cards-container row">
   <% @heros.each do |hero| %>
     <% if hero.photo.attached? %>
+     <a class="hero-title col-2" href='/heros/<%= hero.id %>'>
       <div class="hero-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path hero.photo.key, height: 200, crop: :fill %>')">
-        <a class="hero-title" href='/heros/<%= hero.id %>'>
           <span class="hero-name"><%= hero.name %></span>
-        </a>
       </div>
+     </a>
     <% else %>
+      <a class="hero-title col-2" href='/heros/<%= hero.id %>'>
       <div class="hero-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= hero.picture %>')">
-        <a class="hero-title" href='/heros/<%= hero.id %>'>
           <span class="hero-name"><%= hero.name %></span>
-        </a>
       </div>
+    </a>
     <% end %>
   <% end %>
   </div>
