@@ -48,10 +48,10 @@
             <h1>Book this hero</h1>
             <%= simple_form_for(@booking, url: hero_bookings_path(@hero)) do |f| %>
               <div class="form-element">
-                <%= f.input :beginning, as: :string, required: false,  html5: true, input_html: {class: "datepicker"} %>
-                <%= f.input :end, as: :string, required: false, html5: true, input_html: {class: "datepicker"} %>
+                <%= f.input :beginning, as: :string, required: false,  html5: true, input_html: {class: "datepicker"}, id: "beginning-input" %>
+                <%= f.input :end, as: :string, required: false, html5: true, input_html: {class: "datepicker"}, id: "end-input" %>
               </div>
-              <input type="submit" name="commit" data-confirm="You will have to pay 10€, ok with you?" data-method="post" value="Book the hero" class="btn btn-violet2">
+              <input type="submit" onclick="return confirm(@hero.name);" name="commit" data-method="post" value="Book the hero" class="btn btn-violet2">
             <% end %>
           <% else %>
             <a class="btn-violet" rel="nofollow" data-method="post" href="/users/sign_in">Log in to book</a>

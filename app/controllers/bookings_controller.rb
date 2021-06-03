@@ -21,6 +21,8 @@ class BookingsController < ApplicationController
   def create
     @hero = Hero.find(params[:hero_id])
     @user = current_user
+    @nbofdays = (params[:booking][:end].to_datetime - params[:booking][:beginning].to_datetime).to_i
+    @bookingprice = @nbofdays * @hero.price_per_day
     @booking = Booking.new(booking_params)
     @booking.hero = @hero
     @booking.user = @user
@@ -54,9 +56,10 @@ class BookingsController < ApplicationController
       redirect_to user_path(@user)
   end
 
+
   private
 
   def booking_params
-    params.require(:booking).permit(:user_id, :hero_id, :status, :beginning, :end)
+    params.require(:booking).permit(:user_id, :hero_id, :status, :beginning, :end, :bookingprice)
   end
 end

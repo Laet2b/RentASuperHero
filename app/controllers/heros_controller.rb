@@ -15,6 +15,7 @@ class HerosController < ApplicationController
     @review = Review.new
     @user = current_user
     @average = average(@hero.id)
+    @price_per_day = @hero.price_per_day
   end
 
   def new
@@ -56,10 +57,14 @@ class HerosController < ApplicationController
     return @average
   end
 
+  # def price_per_booking
+  #    beginnin
+  # end
+
   private
 
   def hero_params
-    params.require(:hero).permit(:user_id, :name, :photo)
+    params.require(:hero).permit(:user_id, :name, :photo, :price_per_day)
   end
 
   def hero_api

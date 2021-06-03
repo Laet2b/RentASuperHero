@@ -41,6 +41,7 @@
         <% if a.count == 0 %>
           <p><em>You don't have any hero yet</em></p>
         <% end %>
+        <a class="btn-violet" href="/heros/new?">Add a hero</a>
     </div>
 
     <div class="owner-bookings">
@@ -50,10 +51,10 @@
           <% if booking.hero.user == current_user %>
             <% if booking.status == true %>
               <% c << booking.id %>
-              <p> <%= booking.user.pseudo %> has booked <%= booking.hero.name %> from <%= booking.beginning.strftime("%d/%m/%Y") %> to <%= booking.end.strftime("%d/%m/%Y") %></p>
+              <p> <%= booking.user.pseudo %> has booked <%= booking.hero.name %> from <%= booking.beginning.strftime("%d/%m/%Y") %> to <%= booking.end.strftime("%d/%m/%Y") %> for the price of <%= booking.bookingprice %>€</p>
             <% else %>
               <% c << booking.id %>
-              <p> <%= booking.user.pseudo %> wants to book <%= booking.hero.name %> from <%= booking.beginning %> to <%= booking.end %></p>
+              <p> <%= booking.user.pseudo %> wants to book <%= booking.hero.name %> from <%= booking.beginning %> to <%= booking.end %> for the price of <%= booking.bookingprice %>€</p>
               <%= simple_form_for(booking, url: hero_booking_path(booking.hero, booking.id)) do |f| %>
                 <%=f.collection_radio_buttons :status, [[true, 'Yes'], [false, 'No']], :first, :last %>
                 <input type="submit" name="commit" data-method="patch" value="Confirm" class="btn btn-violet">
@@ -82,9 +83,11 @@
               <a href="/heros/<%= booking.hero.id %>"><em>"<%= booking.hero.name %>"</em></a>
               <% if booking.status == true %>
                 <p>Confirmed</p>
+                <a href="/heros/<%= booking.hero.id %>">Add review</a>
               <% else %>
                 <p>Waiting for confirmation</p>
               <% end %>
+               <p> Price: <%= booking.bookingprice %>€</p>
               <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/bookings/<%= booking.id %>">Cancel</a>
             </div>
             </div>
