@@ -81,13 +81,18 @@
               <% d << booking.id %>
               <div class="hero-info">
               <a href="/heros/<%= booking.hero.id %>"><em>"<%= booking.hero.name %>"</em></a>
+               <p> From <%= booking.beginning.strftime("%a, %B %d") %> to <%= booking.end.strftime("%a, %B %d") %> </p>
+               <p> Price: <%= booking.bookingprice %>€</p>
               <% if booking.status == true %>
                 <p>Confirmed</p>
-                <a href="/heros/<%= booking.hero.id %>">Add review</a>
+                  <% if booking.end.to_s != nil %>
+                    <% if booking.end.to_s <= @time %>
+                      <a href="/heros/<%= booking.hero.id %>">Add review</a>
+                    <% end %>
+                  <% end %>
               <% else %>
                 <p>Waiting for confirmation</p>
               <% end %>
-               <p> Price: <%= booking.bookingprice %>€</p>
               <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/bookings/<%= booking.id %>">Cancel</a>
             </div>
             </div>
@@ -113,6 +118,15 @@
         <% end %>
         <% if b.count == 0 %>
           <p><em>You haven't write any review yet</em></p>
+        <% end %>
+        <% @bookings.each do |booking| %>
+           <% if booking.user == current_user %>
+            <% if booking.status == true %>
+              <% if booking.end.to_s <= @time %>
+                <a href="/heros/<%= booking.hero.id %>">Add a review for <%= booking.hero.name %> </a>
+              <% end %>
+            <% end %>
+          <% end %>
         <% end %>
     </div>
   </div>
