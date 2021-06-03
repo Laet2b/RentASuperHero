@@ -51,7 +51,7 @@
                 <%= f.input :beginning, as: :string, required: false,  html5: true, input_html: {class: "datepicker"}, id: "beginning-input" %>
                 <%= f.input :end, as: :string, required: false, html5: true, input_html: {class: "datepicker"}, id: "end-input" %>
               </div>
-              <input type="submit" onclick="return confirm(@hero.name);" name="commit" data-method="post" value="Book the hero" class="btn btn-violet2">
+            <input type="submit" data-toggle="popover" title="Price of your booking" data-content="You will pay 10€ for the booking. OK?" data-placement="right" name="commit" data-method="post" value="Book the hero" class="btn btn-violet2">
             <% end %>
           <% else %>
             <a class="btn-violet" rel="nofollow" data-method="post" href="/users/sign_in">Log in to book</a>
