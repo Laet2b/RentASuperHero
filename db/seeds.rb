@@ -44,6 +44,7 @@ heros.each do |hero|
     publisher: hero_json['publisher'],
     alignment: hero_json['alignment'],
     picture: hero_picture['url'],
+    price_per_day: [13, 25, 50, 125].sample
     )
   hero.save!
 end
