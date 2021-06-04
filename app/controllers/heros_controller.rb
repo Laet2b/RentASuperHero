@@ -78,6 +78,13 @@ class HerosController < ApplicationController
     @hero.publisher = hero_json["results"][0]["biography"]['publisher']
     @hero.alignment = hero_json["results"][0]["biography"]['alignment']
     @hero.fullname = hero_json["results"][0]["biography"]['full-name']
+    @hero.intelligence = hero_json["results"][0]["powerstat"]["intelligence"]
+    @hero.strength = hero_json["results"][0]["powerstats"]["strength"]
+    @hero.speed = hero_json["results"][0]["powerstats"]["speed"]
+    @hero.durability = hero_json["results"][0]["powerstats"]["durability"]
+    @hero.combat = hero_json["results"][0]["powerstats"]["combat"]
+    @hero.power = hero_json["results"][0]["powerstats"]["power"]
+
 
     if @hero.photo.attached?
 
