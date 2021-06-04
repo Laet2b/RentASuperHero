@@ -86,15 +86,15 @@
         <% @e = [] %>
         <% @hero.bookings.each do |booking| %>
           <% if booking.user == current_user %>
-            <% if booking.status == true %>
+            <% if booking.hero.user != current_user %>
               <% time = Time.new.strftime("%Y-%m-%d") %>
               <% if booking.end.to_s <= time %>
                 <% @e << booking.id %>
-               <% end %>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
-        <% if @e.blank? %>
+        <% if !@e.blank? && @hero.user != current_user %>
           <h2 id="review-add">Add your review</h2>
           <%= simple_form_for [@hero, @review], remote: true do |f| %>
           <div class="form-element">
