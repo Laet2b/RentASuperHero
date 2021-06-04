@@ -1,10 +1,13 @@
-<div class="user-main-container">
-  <a onclick="openProfil()" class="btn-violet2" href="#">MY PROFIL</a>
-  <a onclick="openHeroes()" class="btn-violet2" href="#">MY HEROES</a>
-  <a onclick="openBookings()" class="btn-violet2" href="#">MY BOOKINGS</a>
-  <div class="barre-btns d-flex justify-content-between">
+<div id="profile-navigation">
+  <div class="barre-btns d-flex justify-content-center">
+    <a class="btn-violet ml-1 mr-1 mb-1" href="#division1">MY PROFIL</a>
+    <a class="btn-violet ml-1 mr-1 mb-1" href="#division2">MY HEROES</a>
+    <a class="btn-violet ml-1 mr-1 mb-1" href="#division3">MY BOOKINGS</a>
   </div>
-  <div class="user-container">
+</div>
+
+<div class="user-main-container">
+  <div id="division1" class="user-container">
   <div class="user-intro">
     <% if @user.photo.attached? %>
         <%= cl_image_tag @user.photo.key, class:"avatar", crop: :fill, alt: "avatar" %>
@@ -30,7 +33,7 @@
 </div>
 
 
-    <div class="user-main-container">
+    <div id="division2" class="user-main-container">
     <div class="user-container">
     <div class="owner-heroes">
       <h1 id="owner-heroes-delete">My heroes</h1>
@@ -77,7 +80,7 @@
     </div>
 
 
-   <div class="user-main-container">
+   <div id="division3" class="user-main-container">
 
     <div class="user-bookings">
       <h1 id="booking-info">My bookings</h1>
