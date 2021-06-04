@@ -1,9 +1,9 @@
-D, [2021-06-04T12:52:57.498183 #4] DEBUG -- :   [1m[35m (5.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-D, [2021-06-04T12:52:57.536647 #4] DEBUG -- :   [1m[35m (3.9ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
-D, [2021-06-04T12:52:57.546964 #4] DEBUG -- :   [1m[35m (5.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-D, [2021-06-04T12:52:57.556674 #4] DEBUG -- :   [1m[35m (4.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
-D, [2021-06-04T12:52:57.571751 #4] DEBUG -- :   [1m[35m (8.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-D, [2021-06-04T12:52:57.582790 #4] DEBUG -- :   [1m[35m (4.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+D, [2021-06-04T14:07:15.029330 #4] DEBUG -- :   [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+D, [2021-06-04T14:07:15.044084 #4] DEBUG -- :   [1m[35m (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+D, [2021-06-04T14:07:15.047702 #4] DEBUG -- :   [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+D, [2021-06-04T14:07:15.050206 #4] DEBUG -- :   [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+D, [2021-06-04T14:07:15.053989 #4] DEBUG -- :   [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+D, [2021-06-04T14:07:15.056708 #4] DEBUG -- :   [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
 rails aborted!
 ActiveRecord::ProtectedEnvironmentError: You are attempting to run a destructive action against your 'production' database.
 If you are sure you want to continue, run the same command with the environment variable:

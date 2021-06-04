@@ -121,13 +121,19 @@
                             <% @bob << review.id %>
                           <% end %>
                         <% end %>
+
                         <% if @bob.blank? %>
-                          <a href="/heros/<%= booking.hero.id %>/#review-add">Review and rate <%= booking.hero.name %> ! </a>
+                          <a href="/heros/<%= booking.hero.id %>#review-add">Review and rate <%= booking.hero.name %> ! </a>
                         <% else %>
+
                             <div class="hero-info">
+                              <% booking.hero.reviews.each do |review| %>
+                                <% if review.user == current_user %>
                               <p><em>"<%= review.content %>"</em></p>
                               <p><i class="fas fa-star"></i> <%= review.rating %></p>
                               <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/reviews/<%= review.id %>"><i class="fas fa-trash-alt"></i></a>
+                            <% end %>
+                            <% end %>
                             </div>
                           <% end %>
 
