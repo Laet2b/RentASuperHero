@@ -1,4 +1,9 @@
 <div class="user-main-container">
+  <div class="barre-btns d-flex justify-content-between">
+  <a id="profil-btn" onclick="openProfil()" class="btn-violet" href="#">MY PROFIL</a>
+  <a id="heroes-btn" onclick="openHeroes()" class="btn-violet" href="#">MY HEROES</a>
+  <a id="bookings-btn" onclick="openBookings()" class="btn-violet" href="#">MY BOOKINGS</a>
+  </div>
   <div class="user-container">
   <div class="user-intro">
     <% if @user.photo.attached? %>
@@ -23,6 +28,7 @@
   </div>
  </div>
 </div>
+
 
     <div class="user-main-container">
     <div class="user-container">
@@ -130,4 +136,3 @@
         <% end %>
     </div>
 </div>
-

@@ -3,10 +3,11 @@
   width: 90%;
   background-color: white;
   margin-left: 50px;
-  margin-top: 20px;
+  margin-top: 100px;
   margin-bottom: 50px;
-  padding: 30px;
-  background-color: #A799B7;
+  padding: 5px;
+  background-color: #542E71;
+  border-radius: 4px;
 }
 
 .user-container {
@@ -51,11 +52,10 @@
   width: 60%;
 }
 
-
 input.btn-violet {
   text-decoration: none;
   color: #FDCA40;
-  background-color: #A799B7;
+  background-color: #542E71;
   border-radius: 4px;
   padding: 10px 24px;
   text-align: center;
@@ -63,8 +63,8 @@ input.btn-violet {
 }
 
 input.btn-violet:hover{
-  color: #FDCA40;
-  background-color: #542E71;
+  color: #542E71;
+  background-color: #FDCA40;
 }
 
 .owner-heroes {
@@ -154,10 +154,9 @@ a.delete {
 
 a.btn-violet {
   margin-top: 40px;
-  margin-left: 10px;
   text-decoration: none;
   color: #FDCA40;
-  background-color: #A799B7;
+  background-color: #542E71;
   border-radius: 4px;
   padding: 10px 24px;
   text-align: center;
@@ -165,8 +164,8 @@ a.btn-violet {
 }
 
 a.btn-violet:hover{
-  color: #FDCA40;
-  background-color: #542E71;
+  color: #542E71;
+  background-color: #FDCA40;
 }
 
 .my-bookings-actions {
