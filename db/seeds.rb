@@ -20,31 +20,31 @@ puts 'Creating 3 fake users'
   user.save!
 end
 
-
-heros = %w[70 322 333 332 505]
-
-
 url = "https://superheroapi.com/api/6256070421085368"
+
+heros = ["Ethan hunt", "hellboy", "Nova", "Hulk", "Oracle"]
 
 heros.each do |hero|
 
-  hero_json = RestClient.get("#{url}/#{hero}/biography")
-  hero_json = JSON.parse(hero_json)
+    hero_json = RestClient.get("#{url}/search/#{hero.sub(" ", "%20")}")
+    hero_json = JSON.parse(hero_json)
 
-  hero_category = RestClient.get("#{url}/#{hero}/work")
-  hero_category = JSON.parse(hero_category)
-
-  hero_picture = RestClient.get("#{url}/#{hero}/image")
-  hero_picture = JSON.parse(hero_picture)
-  hero = Hero.new(
-    name: hero_json['name'],
-    category: hero_category['occupation'],
+    hero = Hero.new(
+    name: hero_json["results"][0]['name'],
     user_id: [1, 2, 3].sample,
-    fullname: hero_json['full-name'],
-    publisher: hero_json['publisher'],
-    alignment: hero_json['alignment'],
-    picture: hero_picture['url'],
-    price_per_day: [13, 25, 50, 125].sample
+    price_per_day: [13, 25, 50, 125].sample,
+    category: hero_json["results"][0]["work"]['occupation'],
+    publisher: hero_json["results"][0]["biography"]['publisher'],
+    alignment: hero_json["results"][0]["biography"]['alignment'],
+    fullname: hero_json["results"][0]["biography"]['full-name'],
+    intelligence: hero_json["results"][0]["powerstats"]["intelligence"],
+    strength: hero_json["results"][0]["powerstats"]["strength"],
+    speed: hero_json["results"][0]["powerstats"]["speed"],
+    durability: hero_json["results"][0]["powerstats"]["durability"],
+    power: hero_json["results"][0]["powerstats"]["power"],
+    combat: hero_json["results"][0]["powerstats"]["combat"],
+    picture: hero_json["results"][0]["image"]['url']
     )
-  hero.save!
+    hero.save!
+
 end
