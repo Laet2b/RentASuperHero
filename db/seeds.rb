@@ -13,19 +13,19 @@ require_relative "../app/models/hero"
 
 
   user = User.new(
-    email: bob@gmail.com,
-    encrypted_password: "bobbob"
+    email: "bob@gmail.com",
+    password: "bobbob"
     )
   user.save!
 
   user_2 = User.new(
-    email: laetitia@gmail.com,
-    encrypted_password: "laetitia"
+    email: "laetitia@gmail.com",
+    password: "laetitia"
     )
   user_2.save!
   user_3 = User.new(
-    email: jack@gmail.com,
-    encrypted_password: "jackjack"
+    email: "jack@gmail.com",
+    password: "jackjack"
     )
 url = "https://superheroapi.com/api/6256070421085368"
 
