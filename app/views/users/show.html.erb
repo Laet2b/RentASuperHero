@@ -11,7 +11,7 @@
   <div class="edit-container">
     <h2>Edit your informations</h2>
       <div class="profile-infos">
-        <%= simple_form_for(@user) do |f| %>
+        <%= simple_form_for(@user, remote: true) do |f| %>
         <div class="form-element">
           <%= f.input :pseudo %>
           <%= f.input :email %>
@@ -27,7 +27,7 @@
     <div class="user-main-container">
     <div class="user-container">
     <div class="owner-heroes">
-      <h1>My heroes</h1>
+      <h1 id="owner-heroes-delete">My heroes</h1>
         <% a = [] %>
         <% @heros.each do |hero| %>
           <% if hero.user == current_user %>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="owner-bookings">
-      <h1>Please confirm clients booking</h1>
+      <h1 id="owner-booking-update">Please confirm clients booking</h1>
         <% c = [] %>
         <% @bookings.each do |booking| %>
           <% if booking.hero.user == current_user %>
@@ -55,7 +55,7 @@
             <% else %>
               <% c << booking.id %>
               <p> <%= booking.user.pseudo %> wants to book <%= booking.hero.name %> from <%= booking.beginning %> to <%= booking.end %> for the price of <%= booking.bookingprice %>€</p>
-              <%= simple_form_for(booking, url: hero_booking_path(booking.hero, booking.id)) do |f| %>
+              <%= simple_form_for(booking, url: hero_booking_path(booking.hero, booking.id), remote: true) do |f| %>
                 <%=f.collection_radio_buttons :status, [[true, 'Yes'], [false, 'No']], :first, :last %>
                 <input type="submit" name="commit" data-method="patch" value="Confirm" class="btn btn-violet">
               <% end %>
@@ -72,9 +72,9 @@
 
 
    <div class="user-main-container">
-   <div class="user-container">
+
     <div class="user-bookings">
-      <h1>My bookings</h1>
+      <h1 id="booking-info">My bookings</h1>
       <% d = [] %>
           <% @user.bookings.each do |booking| %>
             <div class="booking">
@@ -103,7 +103,7 @@
     </div>
 
     <div class="user-reviews">
-      <h1>My reviews</h1>
+      <h1 id="review-delete">My reviews</h1>
         <% b = [] %>
         <% @reviews.each do |review| %>
           <% if review.user == current_user %>
@@ -129,6 +129,5 @@
           <% end %>
         <% end %>
     </div>
-  </div>
 </div>
 

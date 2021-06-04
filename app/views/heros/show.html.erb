@@ -62,7 +62,7 @@
   </div>
 
     <div class="display-reviews" style="padding: 20px;">
-      <h2>Reviews</h2>
+      <h2 id="review-display">Reviews</h2>
         <% if @hero.reviews != nil %>
           <% @hero.reviews.each do |review| %>
             <div class="reviews" style="display:flex">
@@ -90,7 +90,7 @@
         <% end %>
         <% if e != [] %>
           <h2>Add your review</h2>
-          <%= simple_form_for [@hero, @review] do |f| %>
+          <%= simple_form_for [@hero, @review], remote: true do |f| %>
           <div class="form-element">
             <%= f.input :content, placeholder: "Add your review here..." %>
             <%= f.input :rating, error: 'Rating should be between 0 to 10', placeholder: 'From 0 to 10' %>

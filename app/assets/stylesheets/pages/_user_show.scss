@@ -99,7 +99,6 @@ input.btn-violet:hover{
 
   p {
     margin: 10px;
-    width: 120px;
   }
 }
 
@@ -123,7 +122,8 @@ a.delete {
   color: #542E71;
   margin-right: 50px;
   box-shadow: 1px 1px 3px grey;
-  width: 50%;
+  width: 100%;
+  margin-bottom: 20px;
   height: auto;
 }
 
@@ -135,7 +135,7 @@ a.delete {
   color: #542E71;
   margin-right: 0px;
   box-shadow: 1px 1px 3px grey;
-  width: 50%;
+  width: 100%;
   height: auto;
 }
 
