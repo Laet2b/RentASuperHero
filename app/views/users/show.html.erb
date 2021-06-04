@@ -11,7 +11,7 @@
   <div class="edit-container">
     <h2>Edit your informations</h2>
       <div class="profile-infos">
-        <%= simple_form_for(@user) do |f| %>
+        <%= simple_form_for(@user, remote: true) do |f| %>
         <div class="form-element">
           <%= f.input :pseudo %>
           <%= f.input :email %>
@@ -55,7 +55,7 @@
             <% else %>
               <% c << booking.id %>
               <p> <%= booking.user.pseudo %> wants to book <%= booking.hero.name %> from <%= booking.beginning %> to <%= booking.end %> for the price of <%= booking.bookingprice %>€</p>
-              <%= simple_form_for(booking, url: hero_booking_path(booking.hero, booking.id)) do |f| %>
+              <%= simple_form_for(booking, url: hero_booking_path(booking.hero, booking.id), remote: true) do |f| %>
                 <%=f.collection_radio_buttons :status, [[true, 'Yes'], [false, 'No']], :first, :last %>
                 <input type="submit" name="commit" data-method="patch" value="Confirm" class="btn btn-violet">
               <% end %>

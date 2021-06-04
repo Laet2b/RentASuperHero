@@ -31,9 +31,9 @@ class HerosController < ApplicationController
     hero_api
     @hero.save
     if @hero.save
-      redirect_to hero_path(@hero)
+      redirect_to hero_path(@hero, anchor: "hero-#{@review.id}")
     else
-      render 'new'
+      render 'new', alert: "Error"
     end
   end
 

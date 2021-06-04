@@ -32,9 +32,9 @@ class BookingsController < ApplicationController
     @booking.status = nil
     @booking.save
     if @booking.save
-      redirect_to user_path(@user)
+      redirect_to user_path(@user, anchor: "booking-#{@review.id}")
     else
-      render 'show'
+      render 'show', alert: "Error"
     end
   end
 

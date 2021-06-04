@@ -10,9 +10,9 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     @review.hero = @hero
     if @review.save
-      redirect_to @hero
+      redirect_to (@hero, anchor: "review-#{@review.id}")
     else
-      list_path(@review.hero)
+      list_path(@review.hero), alert: "Error"
     end
   end
 
