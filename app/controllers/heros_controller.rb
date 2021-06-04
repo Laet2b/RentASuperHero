@@ -31,7 +31,7 @@ class HerosController < ApplicationController
     hero_api
     @hero.save
     if @hero.save
-      redirect_to hero_path(@hero, anchor: "hero-#{@hero.id}")
+      redirect_to hero_path(@hero, anchor: "booking-info")
     else
       render 'new', alert: "Error"
     end
@@ -41,7 +41,7 @@ class HerosController < ApplicationController
     @user = current_user
     @hero = Hero.find(params[:id])
     @hero.destroy
-    redirect_to user_path(current_user)
+    redirect_to user_path(@user, anchor: "owner-heroes-delete")
   end
 
   def average(hero_id)

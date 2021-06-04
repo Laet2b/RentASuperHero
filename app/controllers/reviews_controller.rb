@@ -10,9 +10,9 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     @review.hero = @hero
     if @review.save
-      redirect_to (@hero, anchor: "review-#{@review.id}")
+      redirect_to hero_path(@hero, anchor: "review-display")
     else
-      list_path(@review.hero), alert: "Error"
+      list_path(@review.hero)
     end
   end
 
@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @user = current_user
     @review.destroy
-    redirect_to user_path(@user)
+    redirect_to user_path(@user, anchor: "review-delete")
   end
 
   private
