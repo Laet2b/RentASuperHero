@@ -72,6 +72,7 @@ div.card a {
   margin-bottom: 25px;
   margin-right:42px;
   width: 90%;
+  border-radius: 4px;
 
   h2 {
   font-size: 20px;
@@ -130,6 +131,7 @@ div.card a {
 
   .main-container-new-booking {
     padding: 20px;
+    border-radius: 4px;
   }
 }
 
@@ -164,15 +166,11 @@ p .reviews {
   color: black;
 }
 
-
-
 h2 .reviews {
   margin-right: 15px;
   font-weight: ligther;
   color: #542E71;
 }
-
-
 
 .form-element {
   width: 90%;

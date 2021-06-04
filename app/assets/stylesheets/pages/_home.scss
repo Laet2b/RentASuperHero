@@ -1,5 +1,4 @@
 /* Principal caracteristics */
-
 body {
   margin: Opx;
   padding: 0px;
@@ -67,7 +66,6 @@ h2 {
   text-decoration:none;
 }
 
-
 .align-btn-left ul {
   padding: 0;
   margin: 0;
@@ -96,8 +94,7 @@ h2 {
   margin: auto;
 }
 
-/*Re-anssurance Banner*/
-
+/*Re-assurance Banner*/
 .white-container {
   background-color: white;
   margin: 10px;
@@ -105,7 +102,6 @@ h2 {
 }
 
 #reanssurance-banner{
-  // width: 700px;
   margin: auto;
   padding: 20px;
   display: flex;
@@ -125,6 +121,12 @@ h2 {
   width: 60px;
 }
 
+/* Description White Card Div */
+.description-div {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .card-description {
   width:100%;
   margin: auto;
@@ -140,22 +142,10 @@ h2 {
   position: relative;
 }
 
-.container a {
-  margin: auto;
-}
-
+/* Other clickables cards */
 .transparent-container {
   margin: 10px;
   border-radius: 4px;
-}
-
-.square-img img {
-  display: inline-block;
-  position: relative;
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 10px;
 }
 
 .transparent-card {
