@@ -19,6 +19,7 @@
           <p>Alignment: <em><%= @hero.alignment.capitalize %></em></p>
           <p>Category: <em><%= @hero.category %></em></p>
           <p>Owner: <em><%= @hero.publisher %></em></p>
+          <p>Price per day: <em><%= @hero.price_per_day %> €</em></p>
         </div>
         <div class="show-actions">
           <p>Average rating:
@@ -66,7 +67,7 @@
         <% if @hero.reviews != nil %>
           <% @hero.reviews.each do |review| %>
             <div class="reviews" style="display:flex">
-              <p style="margin-right: 20px"><em>"<%= review.content %>"</em></p>
+              <p style="margin-right: 20px"><%= review.content %></p>
               <p style="margin-right: 20px"><i class="fas fa-star"></i><%= review.rating %></p>
               <p style="margin-right: 20px"> by <%= review.user.pseudo %></p>
             </div>
@@ -89,7 +90,7 @@
           <% end %>
         <% end %>
         <% if e != [] %>
-          <h2>Add your review</h2>
+          <h2 id="review-add">Add your review</h2>
           <%= simple_form_for [@hero, @review], remote: true do |f| %>
           <div class="form-element">
             <%= f.input :content, placeholder: "Add your review here..." %>

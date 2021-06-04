@@ -12,7 +12,7 @@ div.card a {
 
 .show-actions {
   background-color: #542E71;
-  opacity: 0.6;
+  opacity: 0.7;
   color: white;
   display:flex;
   justify-content: space-between;
@@ -20,6 +20,10 @@ div.card a {
   height: 40px;
   padding: 15px;
   box-sizing: content-box;
+
+  p {
+    color: white;
+  }
 }
 
 .show-main-container {
