@@ -11,22 +11,29 @@ require 'rest-client'
 require_relative "../app/models/user"
 require_relative "../app/models/hero"
 
-puts 'Creating 3 fake users'
-3.times do
+
   user = User.new(
-    email: Faker::Internet.email,
-    password: Faker::Internet.password(min_length: 8)
+    email: bob@gmail.com,
+    encrypted_password: "bobbob"
     )
   user.save!
-end
 
+  user_2 = User.new(
+    email: laetitia@gmail.com,
+    encrypted_password: "laetitia"
+    )
+  user_2.save!
+  user_3 = User.new(
+    email: jack@gmail.com,
+    encrypted_password: "jackjack"
+    )
 url = "https://superheroapi.com/api/6256070421085368"
 
 heros = ["Ethan hunt", "hellboy", "Nova", "Hulk", "Oracle"]
 
 heros.each do |hero|
 
-    hero_json = RestClient.get("#{url}/search/#{hero.sub(" ", "%20")}")
+    hero_json = RestClient.get("#{url}/search/#{hero.gsub(" ", "%20")}")
     hero_json = JSON.parse(hero_json)
 
     hero = Hero.new(
