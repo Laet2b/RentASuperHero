@@ -60,7 +60,7 @@
           <% if booking.hero.user == current_user %>
             <% if booking.status == true %>
               <% c << booking.id %>
-              <p> <%= booking.user.pseudo %> has booked <%= booking.hero.name %> from <%= booking.beginning.strftime("%d/%m/%Y") %> to <%= booking.end.strftime("%d/%m/%Y") %> for the price of <%= booking.bookingprice %>€</p>
+              <p> <%= booking.user.email %> has booked <%= booking.hero.name %> from <%= booking.beginning.strftime("%d/%m/%Y") %> to <%= booking.end.strftime("%d/%m/%Y") %> for the price of <%= booking.bookingprice %>€</p>
             <% else %>
               <% c << booking.id %>
               <p> <%= booking.user.pseudo %> wants to book <%= booking.hero.name %> from <%= booking.beginning %> to <%= booking.end %> for the price of <%= booking.bookingprice %>€</p>
@@ -115,29 +115,22 @@
                   <p> <%= booking.hero.name %> has already worked for you !</p>
                 </th>
                 <th>
-                  <% @bookings.each do |booking| %>
-                   <% if booking.user == current_user %>
-                    <% if booking.status == true %>
-                      <% if booking.end.to_s <= @time %>
-                        <% f = [] %>
+                      <% @bob = [] %>
                         <% booking.hero.reviews.each do |review| %>
                           <% if review.user == current_user %>
-                            <% f << review.content %>
+                            <% @bob << review.id %>
                           <% end %>
-                          <% if f.blank? %>
-                            <a href="/heros/<%= booking.hero.id %>/#review-add">Review and rate <%= booking.hero.name %> ! </a>
-                          <% else %>
+                        <% end %>
+                        <% if @bob.blank? %>
+                          <a href="/heros/<%= booking.hero.id %>/#review-add">Review and rate <%= booking.hero.name %> ! </a>
+                        <% else %>
                             <div class="hero-info">
                               <p><em>"<%= review.content %>"</em></p>
                               <p><i class="fas fa-star"></i> <%= review.rating %></p>
                               <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/reviews/<%= review.id %>"><i class="fas fa-trash-alt"></i></a>
                             </div>
                           <% end %>
-                        <% end %>
-                      <% end %>
-                    <% end %>
-                  <% end %>
-                <% end %>
+
                 </th>
 
 
