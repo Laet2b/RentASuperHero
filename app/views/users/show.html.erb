@@ -1,8 +1,8 @@
 <div class="user-main-container">
+  <a onclick="openProfil()" class="btn-violet2" href="#">MY PROFIL</a>
+  <a onclick="openHeroes()" class="btn-violet2" href="#">MY HEROES</a>
+  <a onclick="openBookings()" class="btn-violet2" href="#">MY BOOKINGS</a>
   <div class="barre-btns d-flex justify-content-between">
-  <a id="profil-btn" onclick="openProfil()" class="btn-violet" href="#">MY PROFIL</a>
-  <a id="heroes-btn" onclick="openHeroes()" class="btn-violet" href="#">MY HEROES</a>
-  <a id="bookings-btn" onclick="openBookings()" class="btn-violet" href="#">MY BOOKINGS</a>
   </div>
   <div class="user-container">
   <div class="user-intro">
@@ -38,8 +38,8 @@
         <% @heros.each do |hero| %>
           <% if hero.user == current_user %>
             <div class="hero-info">
-            <a href="/heros/<%= hero.id %>"><em>"<%= hero.name %>"</em></a>
-            <a class="link remove" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/heros/<%= hero.id %>">Remove</a>
+            <a href="/heros/<%= hero.id %>">"<%= hero.name %>"</a>
+            <a class="link remove" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/heros/<%= hero.id %>"><i class="fas fa-trash-alt"></i></a>
             </div>
             <% a << hero.name %>
           <% end %>
@@ -81,58 +81,83 @@
 
     <div class="user-bookings">
       <h1 id="booking-info">My bookings</h1>
-      <% d = [] %>
-          <% @user.bookings.each do |booking| %>
-            <div class="booking">
-              <% d << booking.id %>
-              <div class="hero-info">
+
+      <table>
+        <tr>
+          <th class="column-title">Hero</th>
+          <th class="column-title">Booking dates</th>
+          <th class="column-title">Price</th>
+          <th class="column-title">Status</th>
+          <th class="column-title">Cancel or Review</th>
+        </tr>
+        <% d = [] %>
+        <% @user.bookings.each do |booking| %>
+          <% d << booking.id %>
+          <% if d.count == 0 %>
+            <p><em>You don't have any booking yet</em></p>
+          <% end %>
+
+          <tr>
+            <th>
               <a href="/heros/<%= booking.hero.id %>"><em>"<%= booking.hero.name %>"</em></a>
-               <p> From <%= booking.beginning.strftime("%a, %B %d") %> to <%= booking.end.strftime("%a, %B %d") %> </p>
-               <p> Price: <%= booking.bookingprice %>€</p>
-              <% if booking.status == true %>
-                <p>Confirmed</p>
-                  <% if booking.end.to_s != nil %>
-                    <% if booking.end.to_s <= @time %>
-                      <a href="/heros/<%= booking.hero.id %>">Add review</a>
+            </th>
+            <th>
+              <p> From <%= booking.beginning.strftime("%a, %B %d") %> to <%= booking.end.strftime("%a, %B %d") %> </p>
+            </th>
+            <th>
+              <p> <%= booking.bookingprice %>€</p>
+            </th>
+              <% if booking.end.to_s <= @time %>
+                <th>
+                  <p> <%= booking.hero.name %> has already worked for you !</p>
+                </th>
+                <th>
+                  <% @bookings.each do |booking| %>
+                   <% if booking.user == current_user %>
+                    <% if booking.status == true %>
+                      <% if booking.end.to_s <= @time %>
+                        <% f = [] %>
+                        <% booking.hero.reviews.each do |review| %>
+                          <% if review.user == current_user %>
+                            <% f << review.content %>
+                          <% end %>
+                          <% if f.blank? %>
+                            <a href="/heros/<%= booking.hero.id %>/#review-add">Review and rate <%= booking.hero.name %> ! </a>
+                          <% else %>
+                            <div class="hero-info">
+                              <p><em>"<%= review.content %>"</em></p>
+                              <p><i class="fas fa-star"></i> <%= review.rating %></p>
+                              <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/reviews/<%= review.id %>"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                          <% end %>
+                        <% end %>
+                      <% end %>
                     <% end %>
                   <% end %>
-              <% else %>
-                <p>Waiting for confirmation</p>
+                <% end %>
+                </th>
+
+
+              <% else  %>
+                <% if booking.status == true %>
+                <th>
+                  <p>Confirmed</p>
+                </th>
+                <th>
+                  <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/bookings/<%= booking.id %>">Cancel</a>
+                </th>
+                <% else %>
+                <th>
+                  <p>Waiting for confirmation</p>
+                </th>
+                <th>
+                  <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/bookings/<%= booking.id %>">Cancel</a>
+                </th>
+                <% end %>
               <% end %>
-              <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/bookings/<%= booking.id %>">Cancel</a>
-            </div>
-            </div>
-          <% end %>
-          <% if d.count == 0 %>
-          <p><em>You don't have any booking yet</em></p>
+              </tr>
         <% end %>
+      </table>
     </div>
 
-    <div class="user-reviews">
-      <h1 id="review-delete">My reviews</h1>
-        <% b = [] %>
-        <% @reviews.each do |review| %>
-          <% if review.user == current_user %>
-          <div class="hero-info">
-            <p> <%= review.hero.name %></p>
-            <p><em>"<%= review.content %>"</em></p>
-            <p><i class="fas fa-star"></i> <%= review.rating %></p>
-            <a class="delete" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/reviews/<%= review.id %>">Remove</a>
-          </div>
-            <% b << review.id %>
-          <% end %>
-        <% end %>
-        <% if b.count == 0 %>
-          <p><em>You haven't write any review yet</em></p>
-        <% end %>
-        <% @bookings.each do |booking| %>
-           <% if booking.user == current_user %>
-            <% if booking.status == true %>
-              <% if booking.end.to_s <= @time %>
-                <a href="/heros/<%= booking.hero.id %>">Add a review for <%= booking.hero.name %> </a>
-              <% end %>
-            <% end %>
-          <% end %>
-        <% end %>
-    </div>
 </div>
