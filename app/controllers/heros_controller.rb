@@ -5,7 +5,33 @@ class HerosController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @heros = Hero.all
+
+    if params[:strength]
+      @heros = Hero.where('strength >= ?', 80)
+
+    elsif params[:combat]
+      @heros = Hero.where('combat >= ?', 80)
+
+    elsif params[:intelligence]
+      @heros = Hero.where('intelligence >= ?', 80)
+
+    elsif params[:durability]
+      @heros = Hero.where('durability >= ?', 80)
+
+    elsif params[:power]
+      @heros = Hero.where('power >= ?', 80)
+
+    elsif params[:speed]
+      @heros = Hero.where('speed >= ?', 80)
+
+    elsif params[:query].present?
+      @heros = Hero.search_by_name(params[:query])
+
+    elsif params[:all]
+      @heros = Hero.all
+    else
+      @heros = Hero.all
+    end
     @user = current_user
   end
 
@@ -70,15 +96,16 @@ class HerosController < ApplicationController
 
   def hero_api
     url = "https://superheroapi.com/api/6256070421085368"
-
+    @hero.name = @hero.name.gsub(" ", "%20")
     hero_json = RestClient.get("#{url}/search/#{@hero.name}")
     hero_json = JSON.parse(hero_json)
 
+    @hero.name = hero_json["results"][0]["name"]
     @hero.category = hero_json["results"][0]["work"]['occupation']
     @hero.publisher = hero_json["results"][0]["biography"]['publisher']
     @hero.alignment = hero_json["results"][0]["biography"]['alignment']
     @hero.fullname = hero_json["results"][0]["biography"]['full-name']
-    @hero.intelligence = hero_json["results"][0]["powerstat"]["intelligence"]
+    @hero.intelligence = hero_json["results"][0]["powerstats"]["intelligence"]
     @hero.strength = hero_json["results"][0]["powerstats"]["strength"]
     @hero.speed = hero_json["results"][0]["powerstats"]["speed"]
     @hero.durability = hero_json["results"][0]["powerstats"]["durability"]

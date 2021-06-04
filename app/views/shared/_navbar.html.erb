@@ -15,9 +15,17 @@
           <%= link_to "Heroes", heros_path, class: "nav-link" %>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+      <form class="d-flex ">
+
+        <%= form_tag heros_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find a hero"%>
+          <%= button_tag :submit, class: "btn btn-outline-warning ", id: "nav-btn-search"  do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+        <% end %>
       </form>
       
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
