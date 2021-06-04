@@ -12,6 +12,12 @@ require_relative "../app/models/user"
 require_relative "../app/models/hero"
 
 
+Review.destroy_all
+Booking.destroy_all
+Hero.destroy_all
+User.destroy_all
+
+
   user = User.new(
     email: "bob@gmail.com",
     password: "bobbob"
@@ -27,6 +33,8 @@ require_relative "../app/models/hero"
     email: "jack@gmail.com",
     password: "jackjack"
     )
+  user_3.save!
+
 url = "https://superheroapi.com/api/6256070421085368"
 
 heros = ["Ethan hunt", "hellboy", "Nova", "Hulk", "Oracle"]
@@ -38,7 +46,7 @@ heros.each do |hero|
 
     hero = Hero.new(
     name: hero_json["results"][0]['name'],
-    user_id: [1, 2, 3].sample,
+    user_id: [user.id, user_2.id, user_3.id].sample,
     price_per_day: [13, 25, 50, 125].sample,
     category: hero_json["results"][0]["work"]['occupation'],
     publisher: hero_json["results"][0]["biography"]['publisher'],
