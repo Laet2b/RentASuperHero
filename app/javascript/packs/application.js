@@ -27,12 +27,11 @@ import "bootstrap";
 
 import { initFlatpickr } from "../plugins/flatpickr";
 
-initFlatpickr();
-
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
+  initFlatpickr();
   // Call your functions here, e.g:
   // initSelect2();
   // nbofdays = Document.getElementById("end-input").value.to_datetime - Document.getElementById("beginning-input").value.to_datetime

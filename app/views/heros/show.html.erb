@@ -19,6 +19,7 @@
           <p>Alignment: <em><%= @hero.alignment.capitalize %></em></p>
           <p>Category: <em><%= @hero.category %></em></p>
           <p>Owner: <em><%= @hero.publisher %></em></p>
+          <p>Rented by: <em><%= @hero.user.email %></em></p>
           <p>Price per day: <em><%= @hero.price_per_day %> €</em></p>
         </div>
         <div class="show-actions">
@@ -47,13 +48,17 @@
       <div class="main-container-new-booking">
           <% if user_signed_in? %>
             <h1>Book this hero</h1>
+            <% if @hero.user == current_user %>
+             <p>You cannot book your own hero !</p>
+            <% else %>
             <%= simple_form_for(@booking, url: hero_bookings_path(@hero)) do |f| %>
               <div class="form-element">
                 <%= f.input :beginning, as: :string, required: false,  html5: true, input_html: {class: "datepicker"}, id: "beginning-input" %>
                 <%= f.input :end, as: :string, required: false, html5: true, input_html: {class: "datepicker"}, id: "end-input" %>
               </div>
-            <input type="submit" data-toggle="popover" title="Price of your booking" data-content="You will pay 10€ for the booking. OK?" data-placement="right" name="commit" data-method="post" value="Book the hero" class="btn btn-violet2">
-            <% end %>
+              <input type="submit" data-toggle="popover" title="Price of your booking" data-content="You will pay 10€ for the booking. OK?" data-placement="right" name="commit" data-method="post" value="Book the hero" class="btn btn-violet2">
+              <% end %>
+             <% end %>
           <% else %>
             <a class="btn-violet" rel="nofollow" data-method="post" href="/users/sign_in">Log in to book</a>
           <% end %>
@@ -78,18 +83,18 @@
       </div>
 
       <div class="review-form">
-        <% e = [] %>
+        <% @e = [] %>
         <% @hero.bookings.each do |booking| %>
           <% if booking.user == current_user %>
             <% if booking.status == true %>
               <% time = Time.new.strftime("%Y-%m-%d") %>
               <% if booking.end.to_s <= time %>
-                <% e << booking.id %>
+                <% @e << booking.id %>
                <% end %>
             <% end %>
           <% end %>
         <% end %>
-        <% if e != [] %>
+        <% if @e.blank? %>
           <h2 id="review-add">Add your review</h2>
           <%= simple_form_for [@hero, @review], remote: true do |f| %>
           <div class="form-element">
