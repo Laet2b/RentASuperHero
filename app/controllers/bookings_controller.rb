@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     @user = current_user
+    @time = Time.new.strftime("%Y-%m-%d")
   end
 
   def new
@@ -27,12 +28,13 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.hero = @hero
     @booking.user = @user
+    @booking.bookingprice = @bookingprice
     @booking.status = nil
     @booking.save
     if @booking.save
-      redirect_to user_path(@user)
+      redirect_to user_path(@user, anchor: "booking-info")
     else
-      render 'show'
+      render 'show', alert: "Error"
     end
   end
 
@@ -46,7 +48,7 @@ class BookingsController < ApplicationController
     @user = current_user
     @booking = Booking.find(params[:id])
     @booking.update(booking_params)
-    redirect_to user_path(@user)
+    redirect_to user_path(@user, anchor: "owner-booking-update")
   end
 
   def destroy
@@ -54,7 +56,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @hero = @booking.hero_id
     @booking.destroy
-      redirect_to user_path(@user)
+      redirect_to user_path(@user, anchor: "booking-info")
   end
 
 

@@ -16,6 +16,7 @@ class HerosController < ApplicationController
     @user = current_user
     @average = average(@hero.id)
     @price_per_day = @hero.price_per_day
+    @time = Time.new.strftime("%Y-%m-%d")
   end
 
   def new
@@ -30,9 +31,9 @@ class HerosController < ApplicationController
     hero_api
     @hero.save
     if @hero.save
-      redirect_to hero_path(@hero)
+      redirect_to hero_path(@hero, anchor: "booking-info")
     else
-      render 'new'
+      render 'new', alert: "Error"
     end
   end
 
@@ -40,7 +41,7 @@ class HerosController < ApplicationController
     @user = current_user
     @hero = Hero.find(params[:id])
     @hero.destroy
-    redirect_to user_path(current_user)
+    redirect_to user_path(@user, anchor: "owner-heroes-delete")
   end
 
   def average(hero_id)
@@ -77,6 +78,13 @@ class HerosController < ApplicationController
     @hero.publisher = hero_json["results"][0]["biography"]['publisher']
     @hero.alignment = hero_json["results"][0]["biography"]['alignment']
     @hero.fullname = hero_json["results"][0]["biography"]['full-name']
+    @hero.intelligence = hero_json["results"][0]["powerstat"]["intelligence"]
+    @hero.strength = hero_json["results"][0]["powerstats"]["strength"]
+    @hero.speed = hero_json["results"][0]["powerstats"]["speed"]
+    @hero.durability = hero_json["results"][0]["powerstats"]["durability"]
+    @hero.combat = hero_json["results"][0]["powerstats"]["combat"]
+    @hero.power = hero_json["results"][0]["powerstats"]["power"]
+
 
     if @hero.photo.attached?
 
